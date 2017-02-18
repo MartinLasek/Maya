@@ -15,7 +15,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
+    
+    let tabBarController = UITabBarController()
+    let galleryViewController = GalleryViewController()
+    let cameraViewController = CameraViewController()
+    let wishlistViewController = WishListViewController()
+    let controllers = [galleryViewController, cameraViewController, wishlistViewController]
+    
+    galleryViewController.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "Gallery-Icon"), tag: 1)
+    cameraViewController.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "Camera-Icon"), tag: 2)
+    wishlistViewController.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "Wishlist-Icon"), tag: 3)
+    
+    // centers tab icons vertically
+    for controller in controllers {
+      controller.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0)
+    }
+    
+    tabBarController.viewControllers = controllers
+    
+    window?.rootViewController = tabBarController
+    
     return true
   }
 
@@ -40,7 +59,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func applicationWillTerminate(_ application: UIApplication) {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
-
-
 }
-
