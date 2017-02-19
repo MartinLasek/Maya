@@ -13,30 +13,7 @@ class CameraDispatcher {
   
   func getFrontCameraView(request: CameraViewRequest) throws -> CameraViewResponse {
     
-    let cameraView = UIView()
-    let captureSession = AVCaptureSession()
-    var previewLayer = AVCaptureVideoPreviewLayer()
-    let imageOutput = AVCaptureStillImageOutput()
-    let frontCamera = AVCaptureDevice.defaultDevice(withDeviceType: AVCaptureDeviceType.builtInWideAngleCamera, mediaType: AVMediaTypeVideo, position: AVCaptureDevicePosition.front)
-    let input = try AVCaptureDeviceInput(device: frontCamera)
-    
-    captureSession.sessionPreset = AVCaptureSessionPresetHigh
-    
-    if (captureSession.canAddInput(input)) {
-      captureSession.addInput(input)
-      imageOutput.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
-      
-      if (captureSession.canAddOutput(imageOutput)) {
-        captureSession.addOutput(imageOutput)
-        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-        previewLayer.connection.videoOrientation = AVCaptureVideoOrientation.portrait
-        previewLayer.frame = request.bounds
-        captureSession.startRunning()
-        cameraView.layer.addSublayer(previewLayer)
-      }
-    }
-    
-    return CameraViewResponse(cameraView: cameraView)
+    let cameraView = CameraView(bounds: request.bounds)
+    return CameraViewResponse(cameraView: cameraView.view)
   }
 }
