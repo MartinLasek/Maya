@@ -57,6 +57,8 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
       
       self.imageView.view.image = UIImage(cgImage: img.cgImage!, scale: 1.0, orientation: UIImageOrientation.leftMirrored)
       self.view.addSubview(self.imageView.view)
+      self.view.addSubview(self.imageView.nextButton)
+      self.view.addSubview(self.imageView.closeButton)
     }
   }
 }

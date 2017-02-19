@@ -16,8 +16,20 @@ class TakenPhotoView {
   var view = UIImageView()
   let bounds: CGRect
   
+  let closeButton = UIButton()
+  let nextButton = UIButton()
+  
+  let closeImage = UIImage(named: "close-icon")
+  let nextImage = UIImage(named: "next-icon")
+  
   init(bounds: CGRect) {
     self.bounds = bounds
     self.view.frame = bounds
+    
+    nextButton.setImage(nextImage, for: .normal)
+    nextButton.layer.frame = CGRect(x: (self.bounds.size.width / 6) * 5 - 25, y: self.bounds.size.height - 125, width: CGFloat(50), height: CGFloat(50))
+    
+    closeButton.setImage(closeImage, for: .normal)
+    closeButton.layer.frame = CGRect(x: (self.bounds.size.width / 6) - 20, y: self.bounds.size.height - 120, width: CGFloat(40), height: CGFloat(40))
   }
 }
