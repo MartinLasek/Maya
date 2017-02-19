@@ -10,9 +10,9 @@ import UIKit
 
 class CameraViewResponse {
   
-  let cameraView: UIView
+  let cameraView: CameraView
   
-  init(cameraView: UIView) {
+  init(cameraView: CameraView) {
     self.cameraView = cameraView
   }
 }

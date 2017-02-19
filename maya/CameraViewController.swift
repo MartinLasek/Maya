@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import AVFoundation
 
 class CameraViewController: UIViewController {
-
+  
+  var cameraView: CameraView!
+  var imageView: UIImageView!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
   }
@@ -19,13 +23,46 @@ class CameraViewController: UIViewController {
     
     let cameraDispatcher = CameraDispatcher()
     
-    do {
-      let response = try cameraDispatcher.getFrontCameraView(request: CameraViewRequest(bounds: self.view.bounds))
+    // isolate image view to an own class
+    self.imageView = UIImageView()
+    self.imageView.frame = self.view.bounds
+    self.imageView.isHidden = true
+    
+    self.cameraView = cameraDispatcher.getFrontCameraView(request: CameraViewRequest(bounds: self.view.bounds)).cameraView
+    
+    self.cameraView.shutterButton.addTarget(self, action: #selector(takePhoto), for: .touchUpInside)
+    
+    self.view.addSubview(self.cameraView.view)
+    self.view.addSubview(self.cameraView.shutterButton)
+    self.view.addSubview(self.imageView)
+  }
+}
+
+extension CameraViewController: AVCapturePhotoCaptureDelegate {
+  
+  func takePhoto() {
+    
+    if let cameraView = self.cameraView, let videoConnection = cameraView.imageOutput.connection(withMediaType: AVMediaTypeVideo) {
       
-      // used transition here because it is way faster than 'self.view.addSubview(cameraView)'
-      UIView.transition(from: self.view, to: response.cameraView, duration: 0, options: UIViewAnimationOptions.transitionCurlUp, completion: nil)
-    } catch {
-      return
+      videoConnection.videoOrientation = AVCaptureVideoOrientation.portrait
+      let settings = AVCapturePhotoSettings()
+      cameraView.imageOutput.capturePhoto(with: settings, delegate: self)
+    }
+  }
+  
+  // callback is called when photo so taken
+  func capture(_ captureOutput: AVCapturePhotoOutput,
+               didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?,
+               previewPhotoSampleBuffer: CMSampleBuffer?,
+               resolvedSettings: AVCaptureResolvedPhotoSettings,
+               bracketSettings: AVCaptureBracketedStillImageSettings?,
+               error: Error?)
+  {
+    
+    if let buffer = photoSampleBuffer, let imgData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: buffer, previewPhotoSampleBuffer: nil), let img = UIImage(data: imgData) {
+      
+      self.imageView.image = UIImage(cgImage: img.cgImage!, scale: 1.0, orientation: UIImageOrientation.leftMirrored)
+      self.imageView.isHidden = false
     }
   }
 }

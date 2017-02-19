@@ -11,9 +11,9 @@ import AVFoundation
 
 class CameraDispatcher {
   
-  func getFrontCameraView(request: CameraViewRequest) throws -> CameraViewResponse {
+  func getFrontCameraView(request: CameraViewRequest) -> CameraViewResponse {
     
     let cameraView = CameraView(bounds: request.bounds)
-    return CameraViewResponse(cameraView: cameraView.view)
+    return CameraViewResponse(cameraView: cameraView)
   }
 }
