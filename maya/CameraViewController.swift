@@ -20,11 +20,11 @@ class CameraViewController: UIViewController {
     let cameraDispatcher = CameraDispatcher()
     
     do {
-      let cameraView = try cameraDispatcher.getFrontCameraView(view: self.view)
-      cameraView.layer.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+      let response = try cameraDispatcher.getFrontCameraView(request: CameraViewRequest(bounds: self.view.bounds))
+      response.cameraView.layer.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
       
       // used transition here because it is way faster than 'self.view.addSubview(cameraView)'
-      UIView.transition(from: self.view, to: cameraView, duration: 0, options: UIViewAnimationOptions.transitionCurlUp, completion: nil)
+      UIView.transition(from: self.view, to: response.cameraView, duration: 0, options: UIViewAnimationOptions.transitionCurlUp, completion: nil)
     } catch {
       return
     }

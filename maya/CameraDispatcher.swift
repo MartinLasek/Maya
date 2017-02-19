@@ -11,7 +11,7 @@ import AVFoundation
 
 class CameraDispatcher {
   
-  func getFrontCameraView(view: UIView) throws -> UIView {
+  func getFrontCameraView(request: CameraViewRequest) throws -> CameraViewResponse {
     
     let cameraView = UIView()
     let captureSession = AVCaptureSession()
@@ -31,12 +31,12 @@ class CameraDispatcher {
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         previewLayer.connection.videoOrientation = AVCaptureVideoOrientation.portrait
-        previewLayer.frame = view.bounds
+        previewLayer.frame = request.bounds
         captureSession.startRunning()
         cameraView.layer.addSublayer(previewLayer)
       }
     }
     
-    return cameraView
+    return CameraViewResponse(cameraView: cameraView)
   }
 }

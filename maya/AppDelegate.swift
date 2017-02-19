@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // centers tab icons vertically
     for controller in controllers {
-      controller.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0)
+      controller.tabBarItem.imageInsets = UIEdgeInsetsMake(4, 0, -4, 0)
     }
     
     tabBarController.viewControllers = controllers
