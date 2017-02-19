@@ -12,12 +12,22 @@ import AVFoundation
 class CameraView {
   
   let view = UIView()
+  let bounds: CGRect
   let captureSession = AVCaptureSession()
   var previewLayer = AVCaptureVideoPreviewLayer()
   let imageOutput = AVCapturePhotoOutput()
   let frontCamera = AVCaptureDevice.defaultDevice(withDeviceType: AVCaptureDeviceType.builtInWideAngleCamera, mediaType: AVMediaTypeVideo, position: AVCaptureDevicePosition.front)
+  
+  let shutterButton = UIButton()
+  let closeButton = UIButton()
+  let nextButton = UIButton()
+  
+  let shutterImage = UIImage(named: "shutter-icon")
+  let closeImage = UIImage()
+  let nextImage = UIImage()
 
   init(bounds: CGRect) {
+    self.bounds = bounds
     
     do {
       let input = try AVCaptureDeviceInput(device: frontCamera)
@@ -40,5 +50,13 @@ class CameraView {
     } catch {
       return
     }
+    
+    setupButtons()
+  }
+  
+  func setupButtons() {
+    shutterButton.layer.frame = CGRect(x: self.bounds.size.width / 2 - 30, y: self.bounds.size.height - 130, width: CGFloat(60), height: CGFloat(60))
+    shutterButton.setImage(shutterImage, for: .normal)
+    view.addSubview(shutterButton)
   }
 }
