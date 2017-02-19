@@ -34,6 +34,15 @@ class CameraViewController: UIViewController {
     self.view.addSubview(self.imageView.nextButton)
     self.view.addSubview(self.imageView.closeButton)
   }
+  
+  /*
+  ** will stop the camera session and is also
+  ** needed so the camera doesn't stuck when the
+  ** app is reopened and coming back from background
+  */
+  override func viewWillDisappear(_ animated: Bool) {
+    self.cameraView.captureSession.stopRunning()
+  }
 }
 
 extension CameraViewController: AVCapturePhotoCaptureDelegate {
