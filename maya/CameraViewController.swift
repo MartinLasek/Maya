@@ -23,22 +23,25 @@ class CameraViewController: UIViewController {
     
     let cameraDispatcher = CameraDispatcher()
     
-    self.imageView = TakenPhotoView(bounds: self.view.bounds)
     self.cameraView = cameraDispatcher.getFrontCameraView(request: CameraViewRequest(bounds: self.view.bounds)).cameraView
     self.cameraView.shutterButton.addTarget(self, action: #selector(takePhoto), for: .touchUpInside)
+    self.imageView = TakenPhotoView(bounds: self.view.bounds)
+    self.imageView.closeButton.addTarget(self, action: #selector(hideImageView), for: .touchUpInside)
+    self.imageView.hide()
     
     self.view.addSubview(self.cameraView.view)
     self.view.addSubview(self.cameraView.shutterButton)
+    self.view.addSubview(self.imageView.view)
+    self.view.addSubview(self.imageView.nextButton)
+    self.view.addSubview(self.imageView.closeButton)
   }
 }
 
 extension CameraViewController: AVCapturePhotoCaptureDelegate {
-  
   // starts taking a photo
   func takePhoto() {
     
     if let cameraView = self.cameraView, let videoConnection = cameraView.imageOutput.connection(withMediaType: AVMediaTypeVideo) {
-      
       videoConnection.videoOrientation = AVCaptureVideoOrientation.portrait
       cameraView.imageOutput.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
     }
@@ -52,13 +55,14 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
                bracketSettings: AVCaptureBracketedStillImageSettings?,
                error: Error?)
   {
-    
     if let buffer = photoSampleBuffer, let imgData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: buffer, previewPhotoSampleBuffer: nil), let img = UIImage(data: imgData) {
       
       self.imageView.view.image = UIImage(cgImage: img.cgImage!, scale: 1.0, orientation: UIImageOrientation.leftMirrored)
-      self.view.addSubview(self.imageView.view)
-      self.view.addSubview(self.imageView.nextButton)
-      self.view.addSubview(self.imageView.closeButton)
+      self.imageView.show()
     }
+  }
+  
+  func hideImageView() {
+    self.imageView.hide()
   }
 }
