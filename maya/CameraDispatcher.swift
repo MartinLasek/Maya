@@ -10,10 +10,6 @@ import UIKit
 import AVFoundation
 
 class CameraDispatcher {
+
   
-  func getFrontCameraView(request: CameraViewRequest) -> CameraViewResponse {
-    
-    let cameraView = CameraView(bounds: request.bounds)
-    return CameraViewResponse(cameraView: cameraView)
-  }
 }

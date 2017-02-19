@@ -54,12 +54,18 @@ class TakenPhotoView {
     return CGRect(x: x, y: y, width: buttonSize, height: buttonSize)
   }
   
+  /*
+  ** hide this view and its buttons
+  */
   func hide() {
     self.view.isHidden = true
     self.closeButton.isHidden = true
     self.nextButton.isHidden = true
   }
   
+  /*
+   ** reveals this view and its buttons
+   */
   func show() {
     self.view.isHidden = false
     self.closeButton.isHidden = false

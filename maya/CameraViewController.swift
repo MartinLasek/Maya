@@ -21,10 +21,9 @@ class CameraViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
-    let cameraDispatcher = CameraDispatcher()
-    
-    self.cameraView = cameraDispatcher.getFrontCameraView(request: CameraViewRequest(bounds: self.view.bounds)).cameraView
+    self.cameraView = CameraView(bounds: self.view.bounds)
     self.cameraView.shutterButton.addTarget(self, action: #selector(takePhoto), for: .touchUpInside)
+    
     self.imageView = TakenPhotoView(bounds: self.view.bounds)
     self.imageView.closeButton.addTarget(self, action: #selector(hideImageView), for: .touchUpInside)
     self.imageView.hide()
