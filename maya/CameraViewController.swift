@@ -26,6 +26,7 @@ class CameraViewController: UIViewController {
     
     self.imageView = TakenPhotoView(bounds: self.view.bounds)
     self.imageView.closeButton.addTarget(self, action: #selector(hideImageView), for: .touchUpInside)
+    self.imageView.nextButton.addTarget(self, action: #selector(sendImage), for: .touchUpInside)
     self.imageView.hide()
     
     self.view.addSubview(self.cameraView.view)
@@ -72,5 +73,13 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
   
   func hideImageView() {
     self.imageView.hide()
+  }
+  
+  func sendImage() {
+    let apiDispatcher = ApiDispatcher()
+    
+    if let image = self.imageView.view.image {
+      apiDispatcher.sendImage(req: SendImageRequest(image: image))
+    }
   }
 }

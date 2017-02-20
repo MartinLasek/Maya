@@ -12,6 +12,9 @@
 		233A7B6F1E599B9700440418 /* CameraViewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233A7B6E1E599B9700440418 /* CameraViewRequest.swift */; };
 		233A7B711E599C3F00440418 /* CameraViewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233A7B701E599C3F00440418 /* CameraViewResponse.swift */; };
 		233A7B751E5A50C700440418 /* TakenPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233A7B741E5A50C700440418 /* TakenPhotoView.swift */; };
+		23B0CC9B1E5B70FE0038FE4C /* ApiDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B0CC9A1E5B70FE0038FE4C /* ApiDispatcher.swift */; };
+		23B0CC9E1E5B71600038FE4C /* SendImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B0CC9D1E5B71600038FE4C /* SendImageRequest.swift */; };
+		23B0CCA11E5B7EF20038FE4C /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B0CCA01E5B7EF20038FE4C /* ApiError.swift */; };
 		23F539FF1E565D4A00966C19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F539FE1E565D4A00966C19 /* AppDelegate.swift */; };
 		23F53A011E565D4A00966C19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F53A001E565D4A00966C19 /* ViewController.swift */; };
 		23F53A041E565D4A00966C19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F53A021E565D4A00966C19 /* Main.storyboard */; };
@@ -30,6 +33,9 @@
 		233A7B6E1E599B9700440418 /* CameraViewRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewRequest.swift; sourceTree = "<group>"; };
 		233A7B701E599C3F00440418 /* CameraViewResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewResponse.swift; sourceTree = "<group>"; };
 		233A7B741E5A50C700440418 /* TakenPhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakenPhotoView.swift; sourceTree = "<group>"; };
+		23B0CC9A1E5B70FE0038FE4C /* ApiDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiDispatcher.swift; sourceTree = "<group>"; };
+		23B0CC9D1E5B71600038FE4C /* SendImageRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendImageRequest.swift; sourceTree = "<group>"; };
+		23B0CCA01E5B7EF20038FE4C /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		23F539FB1E565D4A00966C19 /* maya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = maya.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23F539FE1E565D4A00966C19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23F53A001E565D4A00966C19 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +92,22 @@
 				233A7B701E599C3F00440418 /* CameraViewResponse.swift */,
 			);
 			name = Response;
+			sourceTree = "<group>";
+		};
+		23B0CC9C1E5B71580038FE4C /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				23B0CC9D1E5B71600038FE4C /* SendImageRequest.swift */,
+			);
+			name = Request;
+			sourceTree = "<group>";
+		};
+		23B0CC9F1E5B7EE90038FE4C /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				23B0CCA01E5B7EF20038FE4C /* ApiError.swift */,
+			);
+			name = Error;
 			sourceTree = "<group>";
 		};
 		23F539F21E565D4A00966C19 = {
@@ -185,6 +207,8 @@
 		23F53A211E587E1B00966C19 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				23B0CC9F1E5B7EE90038FE4C /* Error */,
+				23B0CC9C1E5B71580038FE4C /* Request */,
 				23F53A261E5893C300966C19 /* Dispatcher */,
 				23F53A231E587F6700966C19 /* Entitiy */,
 			);
@@ -202,6 +226,7 @@
 		23F53A261E5893C300966C19 /* Dispatcher */ = {
 			isa = PBXGroup;
 			children = (
+				23B0CC9A1E5B70FE0038FE4C /* ApiDispatcher.swift */,
 			);
 			name = Dispatcher;
 			sourceTree = "<group>";
@@ -285,10 +310,13 @@
 				233A7B751E5A50C700440418 /* TakenPhotoView.swift in Sources */,
 				233A7B6B1E599A4900440418 /* CameraView.swift in Sources */,
 				233A7B711E599C3F00440418 /* CameraViewResponse.swift in Sources */,
+				23B0CC9B1E5B70FE0038FE4C /* ApiDispatcher.swift in Sources */,
 				23F53A201E58786800966C19 /* WishlistViewController.swift in Sources */,
+				23B0CCA11E5B7EF20038FE4C /* ApiError.swift in Sources */,
 				23F53A1B1E585E5D00966C19 /* CameraViewController.swift in Sources */,
 				23F53A011E565D4A00966C19 /* ViewController.swift in Sources */,
 				233A7B6F1E599B9700440418 /* CameraViewRequest.swift in Sources */,
+				23B0CC9E1E5B71600038FE4C /* SendImageRequest.swift in Sources */,
 				23F53A161E5857CF00966C19 /* CollectionView.swift in Sources */,
 				23F539FF1E565D4A00966C19 /* AppDelegate.swift in Sources */,
 			);
