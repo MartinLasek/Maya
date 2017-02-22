@@ -1,4 +1,5 @@
 # Maya
+
 Take a photo, send it, receive one randomly in exchange.
 
 I want to have alot alot alooot of fun learning about image manipulation and asynchronous programming from within an app!
