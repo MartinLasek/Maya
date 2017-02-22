@@ -11,8 +11,8 @@ import UIKit
 class ApiDispatcher {
   
   static let baseUrl = "http://192.168.2.141:8080"
-  static let postImageUrl = baseUrl + "/image"
-  static let getRandomImageUrl = baseUrl + "/image"
+  static let postImageUrl = baseUrl + "/image/new"
+  static let getRandomImageUrl = baseUrl + "/image/random"
   
   func sendImage(req: SendImageRequest) {
     let url = URL(string: ApiDispatcher.postImageUrl)
