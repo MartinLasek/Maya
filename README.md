@@ -11,7 +11,7 @@ Date | Functionality
 --- | ---
 19.02.2017 | have three tabs/views: gallery, camera, wishlist
 20.02.2017 | can take a photo
- | can send photo
+21.02.2017 | can send photo
  | receives and displays random photo
  | collection view with sent photos in gallery view
  | collection view with received photos in gallery view
