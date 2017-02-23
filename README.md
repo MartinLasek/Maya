@@ -1,6 +1,6 @@
 # Maya
 
-Take a photo and send it - receive one randomly in exchange.
+**Take a photo and send it - receive one randomly in exchange.**
 
 I use this project to dive deep into image handling and manipulation and asynchronous programming in swift!
 
