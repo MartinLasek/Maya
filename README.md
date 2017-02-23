@@ -6,7 +6,7 @@ I use this project to dive deep into image handling and manipulation and asynchr
 
 You can have a look at the API part [MayaAPI](https://github.com/MartinLasek/MayaAPI). It is built with [Vapor](https://github.com/vapor/vapor) - my favorite framework for serverside swift!
 
-## Work Plan
+## Workplan
 
 Date | Functionality
 --- | ---
