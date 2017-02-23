@@ -2,8 +2,8 @@
 
 Take a photo and send it - receive one randomly in exchange.
 
-I am having alot of fun diving deep and deeper into image handling and manipulation and asynchronous programming in swift!
-You can have a look at the backend part [MayaAPI](https://github.com/MartinLasek/MayaAPI), it is built with [Vapor](https://github.com/vapor/vapor) - a really cool framework for serverside swift!
+I use this project to dive deep and deeper into image handling and manipulation and asynchronous programming in swift!
+You can have a look at the backend part [MayaAPI](https://github.com/MartinLasek/MayaAPI)- it is built with [Vapor](https://github.com/vapor/vapor): my favorite framework for serverside swift!
 
 ## Work Plan
 
