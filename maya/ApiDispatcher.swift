@@ -14,7 +14,8 @@ class ApiDispatcher {
   static let postImageUrl = baseUrl + "/image/new"
   static let getRandomImageUrl = baseUrl + "/image/random"
   
-  func sendImage(req: SendImageRequest) {
+  /// Sends taken image as bytes to API
+  func postImage(req: SendImageRequest) {
     let url = URL(string: ApiDispatcher.postImageUrl)
     var httpRequest = URLRequest(url: url!)
     var body = Data()
@@ -34,6 +35,41 @@ class ApiDispatcher {
     
     let session = URLSession.shared
     let task = session.dataTask(with: httpRequest)
+    task.resume()
+  }
+  
+  /// Requests a random image from API.
+  ///
+  /// - parameter complete: closure to be called when image is ready to be display
+  func getRandomImage(complete: ((UIImage?) -> ())? = nil) {
+    let url = URL(string: ApiDispatcher.getRandomImageUrl)
+    var httpRequest = URLRequest(url: url!)
+    httpRequest.httpMethod = "GET"
+    
+    if let phoneUUID = UIDevice.current.identifierForVendor?.uuidString {
+      httpRequest.setValue(phoneUUID, forHTTPHeaderField: "phoneUUID")
+    }
+    
+    let session = URLSession.shared
+    let task = session.dataTask(with: httpRequest) { (data, response, error) in
+      
+      if let data = data, let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? Dictionary<String,AnyObject> {
+        if let imageName = json["image"] as? String {
+          do {
+            if let url = URL(string: ImageEntity.getImageUrl(imageName: imageName)) {
+              let data = try Data(contentsOf: url)
+              let image = ImageEntity(image: UIImage(data: data)!)
+              image.rotate(by: 90)
+              
+              complete?(image.image)
+            }
+          } catch {
+            return
+          }
+        }
+      }
+    }
+    
     task.resume()
   }
 }

@@ -12,7 +12,7 @@ import AVFoundation
 class CameraViewController: UIViewController {
   
   var cameraView: CameraView!
-  var imageView: TakenPhotoView!
+  var takenPhotoView: TakenPhotoView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -24,30 +24,28 @@ class CameraViewController: UIViewController {
     self.cameraView = CameraView(bounds: self.view.bounds)
     self.cameraView.shutterButton.addTarget(self, action: #selector(takePhoto), for: .touchUpInside)
     
-    self.imageView = TakenPhotoView(bounds: self.view.bounds)
-    self.imageView.closeButton.addTarget(self, action: #selector(hideImageView), for: .touchUpInside)
-    self.imageView.nextButton.addTarget(self, action: #selector(sendImage), for: .touchUpInside)
-    self.imageView.hide()
+    self.takenPhotoView = TakenPhotoView(bounds: self.view.bounds)
+    self.takenPhotoView.closeButton.addTarget(self, action: #selector(hideImageView), for: .touchUpInside)
+    self.takenPhotoView.nextButton.addTarget(self, action: #selector(sendImage), for: .touchUpInside)
+    self.takenPhotoView.hide()
     
     self.view.addSubview(self.cameraView.view)
     self.view.addSubview(self.cameraView.shutterButton)
-    self.view.addSubview(self.imageView.view)
-    self.view.addSubview(self.imageView.nextButton)
-    self.view.addSubview(self.imageView.closeButton)
+    self.view.addSubview(self.takenPhotoView.view)
+    self.view.addSubview(self.takenPhotoView.nextButton)
+    self.view.addSubview(self.takenPhotoView.closeButton)
   }
   
-  /*
-  ** will stop the camera session and is also
-  ** needed so the camera doesn't stuck when the
-  ** app is reopened and coming back from background
-  */
+  /// Will stop the camera session
+  /// It also prevents camera to freeze when returning from background.
   override func viewWillDisappear(_ animated: Bool) {
     self.cameraView.captureSession.stopRunning()
   }
 }
 
 extension CameraViewController: AVCapturePhotoCaptureDelegate {
-  // starts taking a photo
+  
+  /// Starts taking a photo.
   func takePhoto() {
     
     if let cameraView = self.cameraView, let videoConnection = cameraView.imageOutput.connection(withMediaType: AVMediaTypeVideo) {
@@ -56,7 +54,7 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
     }
   }
   
-  // callback is called when photo is taken
+  /// Callback fired when photo is taken.
   func capture(_ captureOutput: AVCapturePhotoOutput,
                didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?,
                previewPhotoSampleBuffer: CMSampleBuffer?,
@@ -66,20 +64,26 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
   {
     if let buffer = photoSampleBuffer, let imgData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: buffer, previewPhotoSampleBuffer: nil), let img = UIImage(data: imgData) {
       
-      self.imageView.view.image = UIImage(cgImage: img.cgImage!, scale: 1.0, orientation: UIImageOrientation.leftMirrored)
-      self.imageView.show()
+      self.takenPhotoView.view.image = UIImage(cgImage: img.cgImage!, scale: 1.0, orientation: UIImageOrientation.leftMirrored)
+      self.takenPhotoView.show()
     }
   }
   
   func hideImageView() {
-    self.imageView.hide()
+    self.takenPhotoView.hide()
   }
   
   func sendImage() {
     let apiDispatcher = ApiDispatcher()
     
-    if let image = self.imageView.view.image {
-      apiDispatcher.sendImage(req: SendImageRequest(image: image))
+    if let image = self.takenPhotoView.view.image {
+      apiDispatcher.postImage(req: SendImageRequest(image: image))
     }
+    
+    apiDispatcher.getRandomImage(complete: { image in
+      if let image = image {
+          self.takenPhotoView.view.image = image
+      }
+    })
   }
 }
