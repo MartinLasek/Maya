@@ -1,10 +1,9 @@
 # Maya
 
-Take a photo and send it <-> receive one randomly in exchange.
+Take a photo and send it - receive one randomly in exchange.
 
-I want to have a whole lot of fun getting deeper with image handling and manipulation and asynchronous programming!
-That's on the one hand and on the other hand with API programming and everything from backend to frontend!
-You can have a look at the backend part [MayaAPI](https://github.com/MartinLasek/MayaAPI), it is built with Vapor - a reaaally cool framework for serverside swift programming!
+I am having alot of fun diving deep and deeper into image handling and manipulation and asynchronous programming in swift!
+You can have a look at the backend part [MayaAPI](https://github.com/MartinLasek/MayaAPI), it is built with [Vapor](https://github.com/vapor/vapor) - a really cool framework for serverside swift!
 
 ## Work Plan
 
@@ -20,3 +19,9 @@ Date | Functionality
  | implement tableview in wishlist view
  | add wish to wishlis
  | vote wish up/down
+
+
+### Licence
+**This is going to be a free App. You are not allowed to publish it as your own to the AppStore.**
+
+Other than that, you are highly encouraged to adapt code / adapt project architecture / or contribute :)
