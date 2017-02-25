@@ -82,7 +82,7 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
     
     apiDispatcher.getRandomImage(complete: { image in
       if let image = image {
-          self.takenPhotoView.view.image = image
+        self.takenPhotoView.view.image = image
       }
     })
   }

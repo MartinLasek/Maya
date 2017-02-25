@@ -9,10 +9,57 @@
 import UIKit
 
 class GalleryViewController: UIViewController {
+  var collectionViewContainer: SentImageCollectionView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.view.backgroundColor = UIColor.red
+    collectionViewContainer = SentImageCollectionView(bounds: self.view.bounds)
+    collectionViewContainer.setDelegate(delegate: self)
+    collectionViewContainer.setDataSource(dataSource: self)
+    self.view.addSubview(collectionViewContainer.view)
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    getSentImages()
+  }
+  
+  func getSentImages() {
+    let apiDispatcher = ApiDispatcher()
+    
+    apiDispatcher.getSentImages(complete: { image in
+      if let image = image {
+        self.collectionViewContainer.images.append(image)
+        self.collectionViewContainer.view.reloadData()
+      }
+    })
+  }
+}
+
+extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+  
+  // Specifying the number of sections in the collectionView
+  func numberOfSections(in collectionView: UICollectionView) -> Int {
+    return 1
+  }
+  
+  // Specifying the number of cells in the given section
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return collectionViewContainer.images.count
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! SentImageCollectionViewCell
+    cell.awakeFromNib()
+    return cell
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    let imageCell = cell as! SentImageCollectionViewCell
+    imageCell.sentImageView.image = collectionViewContainer.images[indexPath.row]
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: self.view.frame.width/3, height: self.view.frame.width/3)
   }
 }
