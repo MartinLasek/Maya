@@ -41,8 +41,8 @@ class ApiDispatcher {
   
   /// Requests a random image from API.
   ///
-  /// - parameter complete: closure to be called when image is ready to be display
-  func getRandomImage(complete: ((UIImage?) -> ())? = nil) {
+  /// - parameter complete: closure to be called when image is ready to be displayed
+  func getRandomImage(complete: @escaping ((UIImage?) -> ())) {
     let url = URL(string: ApiDispatcher.getRandomImageUrl)
     var httpRequest = URLRequest(url: url!)
     httpRequest.httpMethod = "GET"
@@ -62,7 +62,7 @@ class ApiDispatcher {
               let image = ImageEntity(image: UIImage(data: data)!)
               image.rotate(by: 90)
               
-              complete?(image.image)
+              complete(image.image)
             }
           } catch {
             return
@@ -74,7 +74,10 @@ class ApiDispatcher {
     task.resume()
   }
   
-  func getSentImages(complete: ((UIImage?) -> ())? = nil) {
+  /// Requests all images sent by related user
+  ///
+  /// - parameter complete: closure to be called when images are ready to be displayed
+  func getSentImages(complete: @escaping ((UIImage?) -> ())) {
     let url = URL(string: ApiDispatcher.getSentImagesUrl)
     var httpRequest = URLRequest(url: url!)
     httpRequest.httpMethod = "GET"
@@ -103,7 +106,7 @@ class ApiDispatcher {
               let image = ImageEntity(image: UIImage(data: data)!)
               image.rotate(by: 90)
               
-              complete?(image.image)
+              complete(image.image)
             }
           } catch {
             return
