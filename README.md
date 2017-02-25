@@ -6,7 +6,7 @@ I use this project to dive deep into image handling and manipulation and asynchr
 
 You can have a look at the API part [MayaAPI](https://github.com/MartinLasek/MayaAPI). It is built with [Vapor](https://github.com/vapor/vapor) - my favorite framework for serverside swift!
 
-## Workplan
+## Workplan (MVP)
 
 Date | Functionality
 --- | ---
@@ -14,7 +14,7 @@ Date | Functionality
 19.02.2017 | can take a photo
 20.02.2017 | can send photo
 23.02.2017 | receives and displays random photo
- | collection view with sent photos in gallery view
+25.02.2017 | collection view with sent photos in gallery view
  | collection view with received photos in gallery view
  | set optional username
  | implement tableview in wishlist view
