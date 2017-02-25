@@ -13,10 +13,10 @@ class GalleryViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     collectionViewContainer = SentImageCollectionView(bounds: self.view.bounds)
     collectionViewContainer.setDelegate(delegate: self)
     collectionViewContainer.setDataSource(dataSource: self)
+    collectionViewContainer.view.frame.size.height -= (tabBarController?.tabBar.frame.height)!
     self.view.addSubview(collectionViewContainer.view)
   }
   
