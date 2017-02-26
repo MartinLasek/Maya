@@ -28,7 +28,9 @@ class GalleryViewController: UIViewController {
     let apiDispatcher = ApiDispatcher()
     
     apiDispatcher.getSentImages(complete: { image in
-      if let image = image {
+      
+      /// only appends images which didn't exist before
+      if !self.collectionViewContainer.images.contains(where: {$0.name == image.name}) {
         self.collectionViewContainer.images.append(image)
         self.collectionViewContainer.view.reloadData()
       }
@@ -56,7 +58,7 @@ extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataS
   
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     let imageCell = cell as! SentImageCollectionViewCell
-    imageCell.sentImageView.image = collectionViewContainer.images[indexPath.row]
+    imageCell.sentImageView.image = collectionViewContainer.images[indexPath.row].image
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

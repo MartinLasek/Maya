@@ -59,7 +59,7 @@ class ApiDispatcher {
           do {
             if let url = URL(string: ImageEntity.getImageUrl(imageName: imageName)) {
               let data = try Data(contentsOf: url)
-              let image = ImageEntity(image: UIImage(data: data)!)
+              let image = ImageEntity(image: UIImage(data: data)!, name: imageName)
               image.rotate(by: 90)
               
               complete(image.image)
@@ -77,7 +77,7 @@ class ApiDispatcher {
   /// Requests all images sent by related user
   ///
   /// - parameter complete: closure to be called when images are ready to be displayed
-  func getSentImages(complete: @escaping ((UIImage?) -> ())) {
+  func getSentImages(complete: @escaping ((ImageEntity) -> ())) {
     let url = URL(string: ApiDispatcher.getSentImagesUrl)
     var httpRequest = URLRequest(url: url!)
     httpRequest.httpMethod = "GET"
@@ -103,10 +103,10 @@ class ApiDispatcher {
             let imageUrl = ImageEntity.getImageUrl(imageName: imageName)
             if let url = URL(string: imageUrl) {
               let data = try Data(contentsOf: url)
-              let image = ImageEntity(image: UIImage(data: data)!)
+              let image = ImageEntity(image: UIImage(data: data)!, name: imageName)
               image.rotate(by: 90)
               
-              complete(image.image)
+              complete(image)
             }
           } catch {
             return

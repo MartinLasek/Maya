@@ -11,7 +11,7 @@ import UIKit
 
 class SentImageCollectionView {
   var layout = UICollectionViewFlowLayout()
-  var images = [UIImage]()
+  var images = [ImageEntity]()
   let bounds: CGRect
   var view: UICollectionView
   

@@ -10,9 +10,15 @@ import UIKit
 
 class ImageEntity {
   var image: UIImage
+  var name: String
   
-  init(image: UIImage) {
+  init(image: UIImage, name: String) {
     self.image = image
+    self.name = name
+  }
+  
+  static func getImageUrl(imageName: String) -> String {
+    return ApiDispatcher.baseUrl + "/images/" + imageName
   }
   
   func rotate(by deg: Double) {
@@ -42,7 +48,11 @@ class ImageEntity {
     UIGraphicsEndImageContext()
   }
   
-  static func getImageUrl(imageName: String) -> String {
-    return ApiDispatcher.baseUrl + "/images/" + imageName
+  func getImageName() -> String {
+    return name
+  }
+  
+  func getImageUrl() -> String {
+    return ApiDispatcher.baseUrl + "/images/" + name
   }
 }
