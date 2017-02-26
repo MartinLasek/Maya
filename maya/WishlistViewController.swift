@@ -19,11 +19,7 @@ class WishListViewController: UIViewController {
   }
   
   func prepareView() {
-    let gradient: CAGradientLayer = CAGradientLayer()
-    let colorTop = UIColor(red: 255/255, green: 106/255, blue: 79/255, alpha: 1.0)
-    let colorBottom = UIColor(red: 255/255, green: 70/255, blue: 115/255, alpha: 1.0)
-    gradient.frame = self.view.bounds
-    gradient.colors = [colorTop.cgColor, colorBottom.cgColor]
-    self.view.layer.insertSublayer(gradient, at: 0)
+    let backgroundColor = BackgroundColor(bounds: self.view.bounds)
+    self.view.layer.insertSublayer(backgroundColor.prepareGradient(), at: 0)
   }
 }

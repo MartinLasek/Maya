@@ -7,5 +7,6 @@
 //
 
 enum ApiError: Error {
+  
   case imageDataIsNull
 }

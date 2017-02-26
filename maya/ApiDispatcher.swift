@@ -5,6 +5,7 @@
 //  Created by Martin Lasek on 20.02.17.
 //  Copyright © 2017 Martin Lasek. All rights reserved.
 //
+
 import Foundation
 import UIKit
 

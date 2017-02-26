@@ -9,6 +9,7 @@
 import UIKit
 
 class ImageEntity {
+  
   var image: UIImage
   var name: String
   

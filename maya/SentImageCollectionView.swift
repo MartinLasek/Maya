@@ -6,10 +6,10 @@
 //  Copyright © 2017 Martin Lasek. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class SentImageCollectionView {
+  
   var layout = UICollectionViewFlowLayout()
   var images = [ImageEntity]()
   let bounds: CGRect

@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 
 class CameraView {
+  
   let view = UIView()
   let bounds: CGRect
   let captureSession = AVCaptureSession()
