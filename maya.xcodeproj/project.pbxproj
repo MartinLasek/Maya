@@ -100,6 +100,13 @@
 			name = Response;
 			sourceTree = "<group>";
 		};
+		239E0E891E6337B700B736D3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		23B0CC9C1E5B71580038FE4C /* Request */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +239,7 @@
 		23F53A211E587E1B00966C19 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				239E0E891E6337B700B736D3 /* View */,
 				23B0CC9F1E5B7EE90038FE4C /* Error */,
 				23B0CC9C1E5B71580038FE4C /* Request */,
 				23F53A261E5893C300966C19 /* Dispatcher */,

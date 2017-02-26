@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let wishlistViewController = WishListViewController()
     let controllers = [galleryViewController, cameraViewController, wishlistViewController]
     
+    tabBarController.tabBar.backgroundColor = UIColor.white
+    //tabBarController.tabBar.barTintColor = UIColor.white
+    
     galleryViewController.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "Gallery-Icon"), tag: 1)
     cameraViewController.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "Camera-Icon"), tag: 2)
     wishlistViewController.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "Wishlist-Icon"), tag: 3)
