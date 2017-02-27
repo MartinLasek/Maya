@@ -15,7 +15,7 @@ Date | Functionality
 20.02.2017 | can send photo
 23.02.2017 | receives and displays random photo
 25.02.2017 | collection view with sent photos in gallery view
- | collection view with received photos in gallery view
+27.02.2017 | collection view with received photos in gallery view
  | set optional username
  | implement tableview in wishlist view
  | add wish to wishlis
