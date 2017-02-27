@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		230320301E64B803002FC78E /* GalleryTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2303202F1E64B803002FC78E /* GalleryTabView.swift */; };
 		233A7B6B1E599A4900440418 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233A7B6A1E599A4900440418 /* CameraView.swift */; };
 		233A7B6F1E599B9700440418 /* CameraViewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233A7B6E1E599B9700440418 /* CameraViewRequest.swift */; };
 		233A7B711E599C3F00440418 /* CameraViewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233A7B701E599C3F00440418 /* CameraViewResponse.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2303202F1E64B803002FC78E /* GalleryTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryTabView.swift; sourceTree = "<group>"; };
 		233A7B6A1E599A4900440418 /* CameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		233A7B6E1E599B9700440418 /* CameraViewRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewRequest.swift; sourceTree = "<group>"; };
 		233A7B701E599C3F00440418 /* CameraViewResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewResponse.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			children = (
 				23F53A151E5857CF00966C19 /* SentImageCollectionView.swift */,
 				234048D11E60ECB000DA9AA8 /* SentImageCollectionViewCell.swift */,
+				2303202F1E64B803002FC78E /* GalleryTabView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				233A7B6B1E599A4900440418 /* CameraView.swift in Sources */,
 				233A7B711E599C3F00440418 /* CameraViewResponse.swift in Sources */,
 				23B0CC9B1E5B70FE0038FE4C /* ApiDispatcher.swift in Sources */,
+				230320301E64B803002FC78E /* GalleryTabView.swift in Sources */,
 				23F53A201E58786800966C19 /* WishlistViewController.swift in Sources */,
 				23B0CCA11E5B7EF20038FE4C /* ApiError.swift in Sources */,
 				239E0E8B1E6358B600B736D3 /* BackgroundColor.swift in Sources */,
