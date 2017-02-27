@@ -15,6 +15,7 @@ class ApiDispatcher {
   static let postImageUrl = baseUrl + "/image/new"
   static let getRandomImageUrl = baseUrl + "/image/random"
   static let getSentImagesUrl = baseUrl + "/image/list/sent"
+  static let getReceivedImagesUrl = baseUrl + "/image/list/received"
   
   /// Sends taken image as bytes to API
   func postImage(req: SendImageRequest) {
@@ -80,6 +81,47 @@ class ApiDispatcher {
   /// - parameter complete: closure to be called when images are ready to be displayed
   func getSentImages(complete: @escaping ((ImageEntity) -> ())) {
     let url = URL(string: ApiDispatcher.getSentImagesUrl)
+    var httpRequest = URLRequest(url: url!)
+    httpRequest.httpMethod = "GET"
+    
+    if let phoneUUID = UIDevice.current.identifierForVendor?.uuidString {
+      httpRequest.setValue(phoneUUID, forHTTPHeaderField: "phoneUUID")
+    }
+    
+    let session = URLSession.shared
+    let task = session.dataTask(with: httpRequest) { (data, response, error) in
+      
+      guard let _:Data = data, let _:URLResponse = response, error == nil else {
+        print("error")
+        print(error ?? "couldn't print error")
+        return
+      }
+      
+      if let data = data, let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String] {
+        
+        for imageName in json {
+          
+          do {
+            let imageUrl = ImageEntity.getImageUrl(imageName: imageName)
+            if let url = URL(string: imageUrl) {
+              let data = try Data(contentsOf: url)
+              let image = ImageEntity(image: UIImage(data: data)!, name: imageName)
+              image.rotate(by: 90)
+              
+              complete(image)
+            }
+          } catch {
+            return
+          }
+        }
+      }
+    }
+    
+    task.resume()
+  }
+  
+  func getReceivedImages(complete: @escaping ((ImageEntity) -> ())) {
+    let url = URL(string: ApiDispatcher.getReceivedImagesUrl)
     var httpRequest = URLRequest(url: url!)
     httpRequest.httpMethod = "GET"
     

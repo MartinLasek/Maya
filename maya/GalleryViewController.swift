@@ -55,6 +55,19 @@ class GalleryViewController: UIViewController {
     })
   }
   
+  func getReceivedImages() {
+    let apiDispatcher = ApiDispatcher()
+    
+    apiDispatcher.getReceivedImages(complete: { image in
+      
+      /// only appends images which didn't exist before
+      if !self.receivedImageCollectionView.images.contains(where: {$0.name == image.name}) {
+        self.receivedImageCollectionView.images.append(image)
+        self.receivedImageCollectionView.view.reloadData()
+      }
+    })
+  }
+  
   func prepareView() {
     let backgroundColor = BackgroundColor(bounds: self.view.bounds)
     self.view.layer.insertSublayer(backgroundColor.prepareGradient(), at: 0)
@@ -63,11 +76,13 @@ class GalleryViewController: UIViewController {
   func showSentImageCollection() {
     self.receivedImageCollectionView.view.isHidden = true
     self.sentImageCollectionView.view.isHidden = false
+    getSentImages()
   }
   
   func showReceivedImageCollection() {
     self.sentImageCollectionView.view.isHidden = true
     self.receivedImageCollectionView.view.isHidden = false
+    getReceivedImages()
   }
 }
 
