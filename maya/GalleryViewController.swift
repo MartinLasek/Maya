@@ -45,7 +45,7 @@ class GalleryViewController: UIViewController {
   func getSentImages() {
     let apiDispatcher = ApiDispatcher()
     
-    apiDispatcher.getSentImages(complete: { image in
+    apiDispatcher.getImages(imageTypeUrl: ApiDispatcher.getSentImagesUrl, complete: { image in
       
       /// only appends images which didn't exist before
       if !self.sentImageCollectionView.images.contains(where: {$0.name == image.name}) {
@@ -58,7 +58,7 @@ class GalleryViewController: UIViewController {
   func getReceivedImages() {
     let apiDispatcher = ApiDispatcher()
     
-    apiDispatcher.getReceivedImages(complete: { image in
+    apiDispatcher.getImages(imageTypeUrl: ApiDispatcher.getReceivedImagesUrl, complete: { image in
       
       /// only appends images which didn't exist before
       if !self.receivedImageCollectionView.images.contains(where: {$0.name == image.name}) {
