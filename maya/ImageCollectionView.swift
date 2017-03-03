@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SentImageCollectionView {
+class ImageCollectionView {
   
   var layout = UICollectionViewFlowLayout()
   var images = [ImageEntity]()
@@ -22,7 +22,7 @@ class SentImageCollectionView {
     layout.minimumInteritemSpacing = 0
     
     view = UICollectionView(frame: CGRect(x: 0, y: bounds.height * 0.34, width: bounds.width, height: bounds.height * 0.66), collectionViewLayout: layout)
-    view.register(SentImageCollectionViewCell.self, forCellWithReuseIdentifier: "imageCell")
+    view.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: "imageCell")
     view.backgroundColor = UIColor.white
   }
   

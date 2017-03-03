@@ -76,8 +76,8 @@ class ApiDispatcher {
     task.resume()
   }
   
-  func getImages(imageTypeUrl: String, complete: @escaping ((ImageEntity) -> ())) {
-    let url = URL(string: imageTypeUrl)
+  func getImages(fromUrl: String, complete: @escaping ((ImageEntity) -> ())) {
+    let url = URL(string: fromUrl)
     var httpRequest = URLRequest(url: url!)
     httpRequest.httpMethod = "GET"
     

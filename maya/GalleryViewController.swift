@@ -10,18 +10,18 @@ import UIKit
 
 class GalleryViewController: UIViewController {
   
-  var sentImageCollectionView: SentImageCollectionView!
-  var receivedImageCollectionView: SentImageCollectionView!
+  var sentImageCollectionView: ImageCollectionView!
+  var receivedImageCollectionView: ImageCollectionView!
   var galleryTabBar: GalleryTabView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    sentImageCollectionView = SentImageCollectionView(bounds: self.view.bounds)
+    sentImageCollectionView = ImageCollectionView(bounds: self.view.bounds)
     sentImageCollectionView.setDelegate(delegate: self)
     sentImageCollectionView.setDataSource(dataSource: self)
     sentImageCollectionView.view.frame.size.height -= (tabBarController?.tabBar.frame.height)!
     
-    receivedImageCollectionView = SentImageCollectionView(bounds: self.view.bounds)
+    receivedImageCollectionView = ImageCollectionView(bounds: self.view.bounds)
     receivedImageCollectionView.setDelegate(delegate: self)
     receivedImageCollectionView.setDataSource(dataSource: self)
     receivedImageCollectionView.view.frame.size.height -= (tabBarController?.tabBar.frame.height)!
@@ -45,7 +45,7 @@ class GalleryViewController: UIViewController {
   func getSentImages() {
     let apiDispatcher = ApiDispatcher()
     
-    apiDispatcher.getImages(imageTypeUrl: ApiDispatcher.getSentImagesUrl, complete: { image in
+    apiDispatcher.getImages(fromUrl: ApiDispatcher.getSentImagesUrl, complete: { image in
       
       /// only appends images which didn't exist before
       if !self.sentImageCollectionView.images.contains(where: {$0.name == image.name}) {
@@ -58,7 +58,7 @@ class GalleryViewController: UIViewController {
   func getReceivedImages() {
     let apiDispatcher = ApiDispatcher()
     
-    apiDispatcher.getImages(imageTypeUrl: ApiDispatcher.getReceivedImagesUrl, complete: { image in
+    apiDispatcher.getImages(fromUrl: ApiDispatcher.getReceivedImagesUrl, complete: { image in
       
       /// only appends images which didn't exist before
       if !self.receivedImageCollectionView.images.contains(where: {$0.name == image.name}) {
@@ -99,13 +99,13 @@ extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataS
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! SentImageCollectionViewCell
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! ImageCollectionViewCell
     cell.awakeFromNib()
     return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-    let imageCell = cell as! SentImageCollectionViewCell
+    let imageCell = cell as! ImageCollectionViewCell
     let image = sentImageCollectionView.view.isHidden ? receivedImageCollectionView.images[indexPath.row].image : sentImageCollectionView.images[indexPath.row].image
     imageCell.sentImageView.image = image
   }

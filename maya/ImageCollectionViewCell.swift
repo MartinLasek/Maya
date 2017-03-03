@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SentImageCollectionViewCell: UICollectionViewCell {
+class ImageCollectionViewCell: UICollectionViewCell {
   
   var sentImageView: UIImageView!
   
