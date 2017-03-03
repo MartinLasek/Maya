@@ -23,10 +23,10 @@ class GalleryTabView {
     sentTab.layer.frame = CGRect(x: 0, y: bounds.height * 0.26, width: bounds.width/2, height: bounds.height * 0.08)
     sentTab.backgroundColor = UIColor.white
     sentTab.setTitle("sent", for: .normal)
-    sentTab.setTitleColor(UIColor.black, for: .normal)
+    sentTab.setTitleColor(UIColor.gray, for: .normal)
     receivedTab.layer.frame = CGRect(x: bounds.width/2, y: bounds.height * 0.26, width: bounds.width/2, height: bounds.height * 0.08)
     receivedTab.backgroundColor = UIColor.white
     receivedTab.setTitle("received", for: .normal)
-    receivedTab.setTitleColor(UIColor.black, for: .normal)
+    receivedTab.setTitleColor(UIColor.gray, for: .normal)
   }
 }

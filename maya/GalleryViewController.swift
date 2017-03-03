@@ -10,29 +10,30 @@ import UIKit
 
 class GalleryViewController: UIViewController {
   
-  var sentImageCollectionView: ImageCollectionView!
-  var receivedImageCollectionView: ImageCollectionView!
+  var sentImageCollection: ImageCollectionView!
+  var receivedImageCollection: ImageCollectionView!
   var galleryTabBar: GalleryTabView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    sentImageCollectionView = ImageCollectionView(bounds: self.view.bounds)
-    sentImageCollectionView.setDelegate(delegate: self)
-    sentImageCollectionView.setDataSource(dataSource: self)
-    sentImageCollectionView.view.frame.size.height -= (tabBarController?.tabBar.frame.height)!
+    sentImageCollection = ImageCollectionView(bounds: self.view.bounds)
+    sentImageCollection.setDelegate(delegate: self)
+    sentImageCollection.setDataSource(dataSource: self)
+    sentImageCollection.view.frame.size.height -= (tabBarController?.tabBar.frame.height)!
     
-    receivedImageCollectionView = ImageCollectionView(bounds: self.view.bounds)
-    receivedImageCollectionView.setDelegate(delegate: self)
-    receivedImageCollectionView.setDataSource(dataSource: self)
-    receivedImageCollectionView.view.frame.size.height -= (tabBarController?.tabBar.frame.height)!
-    receivedImageCollectionView.view.isHidden = true
+    receivedImageCollection = ImageCollectionView(bounds: self.view.bounds)
+    receivedImageCollection.setDelegate(delegate: self)
+    receivedImageCollection.setDataSource(dataSource: self)
+    receivedImageCollection.view.frame.size.height -= (tabBarController?.tabBar.frame.height)!
+    receivedImageCollection.view.isHidden = true
     
     galleryTabBar = GalleryTabView(bounds: self.view.bounds)
     galleryTabBar.sentTab.addTarget(self, action: #selector(showSentImageCollection), for: .touchUpInside)
     galleryTabBar.receivedTab.addTarget(self, action: #selector(showReceivedImageCollection), for: .touchUpInside)
+    galleryTabBar.sentTab.setTitleColor(UIColor.black, for: .normal)
     
-    self.view.addSubview(sentImageCollectionView.view)
-    self.view.addSubview(receivedImageCollectionView.view)
+    self.view.addSubview(sentImageCollection.view)
+    self.view.addSubview(receivedImageCollection.view)
     self.view.addSubview(galleryTabBar.sentTab)
     self.view.addSubview(galleryTabBar.receivedTab)
   }
@@ -48,7 +49,7 @@ class GalleryViewController: UIViewController {
     apiDispatcher.getImages(fromUrl: ApiDispatcher.getSentImagesUrl, complete: { imageName in
       
       /// only appends images which didn't exist before
-      if !self.sentImageCollectionView.images.contains(where: {$0.name == imageName}) {
+      if !self.sentImageCollection.images.contains(where: {$0.name == imageName}) {
         
         do {
           let imageUrl = ImageEntity.getImageUrl(imageName: imageName)
@@ -57,10 +58,10 @@ class GalleryViewController: UIViewController {
             let image = ImageEntity(image: UIImage(data: data)!, name: imageName)
             image.rotate(by: 90)
             
-            self.sentImageCollectionView.images.append(image)
+            self.sentImageCollection.images.append(image)
             
             DispatchQueue.main.async(execute: {
-              self.sentImageCollectionView.view.reloadData()
+              self.sentImageCollection.view.reloadData()
             })
           }
         } catch {
@@ -76,7 +77,7 @@ class GalleryViewController: UIViewController {
     apiDispatcher.getImages(fromUrl: ApiDispatcher.getReceivedImagesUrl, complete: { imageName in
       
       /// only appends images which didn't exist before
-      if !self.receivedImageCollectionView.images.contains(where: {$0.name == imageName}) {
+      if !self.receivedImageCollection.images.contains(where: {$0.name == imageName}) {
         
         do {
           let imageUrl = ImageEntity.getImageUrl(imageName: imageName)
@@ -85,10 +86,10 @@ class GalleryViewController: UIViewController {
             let image = ImageEntity(image: UIImage(data: data)!, name: imageName)
             image.rotate(by: 90)
             
-            self.receivedImageCollectionView.images.append(image)
+            self.receivedImageCollection.images.append(image)
             
             DispatchQueue.main.async(execute: {
-              self.receivedImageCollectionView.view.reloadData()
+              self.receivedImageCollection.view.reloadData()
             })
           }
         } catch {
@@ -104,14 +105,18 @@ class GalleryViewController: UIViewController {
   }
   
   func showSentImageCollection() {
-    self.receivedImageCollectionView.view.isHidden = true
-    self.sentImageCollectionView.view.isHidden = false
+    self.receivedImageCollection.view.isHidden = true
+    self.sentImageCollection.view.isHidden = false
+    self.galleryTabBar.sentTab.setTitleColor(UIColor.black, for: .normal)
+    self.galleryTabBar.receivedTab.setTitleColor(UIColor.gray, for: .normal)
     getSentImages()
   }
   
   func showReceivedImageCollection() {
-    self.sentImageCollectionView.view.isHidden = true
-    self.receivedImageCollectionView.view.isHidden = false
+    self.receivedImageCollection.view.isHidden = false
+    self.sentImageCollection.view.isHidden = true
+    self.galleryTabBar.sentTab.setTitleColor(UIColor.gray, for: .normal)
+    self.galleryTabBar.receivedTab.setTitleColor(UIColor.black, for: .normal)
     getReceivedImages()
   }
 }
@@ -125,7 +130,7 @@ extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataS
   
   // Specifying the number of cells in the given section
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return sentImageCollectionView.view.isHidden ? receivedImageCollectionView.images.count : sentImageCollectionView.images.count
+    return sentImageCollection.view.isHidden ? receivedImageCollection.images.count : sentImageCollection.images.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -136,7 +141,7 @@ extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataS
   
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     let imageCell = cell as! ImageCollectionViewCell
-    let image = sentImageCollectionView.view.isHidden ? receivedImageCollectionView.images[indexPath.row].image : sentImageCollectionView.images[indexPath.row].image
+    let image = sentImageCollection.view.isHidden ? receivedImageCollection.images[indexPath.row].image : sentImageCollection.images[indexPath.row].image
     imageCell.sentImageView.image = image
   }
   
