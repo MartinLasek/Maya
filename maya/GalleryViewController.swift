@@ -58,7 +58,10 @@ class GalleryViewController: UIViewController {
             image.rotate(by: 90)
             
             self.sentImageCollectionView.images.append(image)
-            self.sentImageCollectionView.view.reloadData()
+            
+            DispatchQueue.main.async(execute: {
+              self.sentImageCollectionView.view.reloadData()
+            })
           }
         } catch {
           return
@@ -83,7 +86,10 @@ class GalleryViewController: UIViewController {
             image.rotate(by: 90)
             
             self.receivedImageCollectionView.images.append(image)
-            self.receivedImageCollectionView.view.reloadData()
+            
+            DispatchQueue.main.async(execute: {
+              self.receivedImageCollectionView.view.reloadData()
+            })
           }
         } catch {
           return
