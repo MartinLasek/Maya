@@ -76,7 +76,7 @@ class ApiDispatcher {
     task.resume()
   }
   
-  func getImages(fromUrl: String, complete: @escaping ((ImageEntity) -> ())) {
+  func getImages(fromUrl: String, complete: @escaping ((String) -> ())) {
     let url = URL(string: fromUrl)
     var httpRequest = URLRequest(url: url!)
     httpRequest.httpMethod = "GET"
@@ -98,18 +98,7 @@ class ApiDispatcher {
         
         for imageName in json {
           
-          do {
-            let imageUrl = ImageEntity.getImageUrl(imageName: imageName)
-            if let url = URL(string: imageUrl) {
-              let data = try Data(contentsOf: url)
-              let image = ImageEntity(image: UIImage(data: data)!, name: imageName)
-              image.rotate(by: 90)
-              
-              complete(image)
-            }
-          } catch {
-            return
-          }
+          complete(imageName)
         }
       }
     }

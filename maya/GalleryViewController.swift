@@ -45,12 +45,24 @@ class GalleryViewController: UIViewController {
   func getSentImages() {
     let apiDispatcher = ApiDispatcher()
     
-    apiDispatcher.getImages(fromUrl: ApiDispatcher.getSentImagesUrl, complete: { image in
+    apiDispatcher.getImages(fromUrl: ApiDispatcher.getSentImagesUrl, complete: { imageName in
       
       /// only appends images which didn't exist before
-      if !self.sentImageCollectionView.images.contains(where: {$0.name == image.name}) {
-        self.sentImageCollectionView.images.append(image)
-        self.sentImageCollectionView.view.reloadData()
+      if !self.sentImageCollectionView.images.contains(where: {$0.name == imageName}) {
+        
+        do {
+          let imageUrl = ImageEntity.getImageUrl(imageName: imageName)
+          if let url = URL(string: imageUrl) {
+            let data = try Data(contentsOf: url)
+            let image = ImageEntity(image: UIImage(data: data)!, name: imageName)
+            image.rotate(by: 90)
+            
+            self.sentImageCollectionView.images.append(image)
+            self.sentImageCollectionView.view.reloadData()
+          }
+        } catch {
+          return
+        }
       }
     })
   }
@@ -58,12 +70,24 @@ class GalleryViewController: UIViewController {
   func getReceivedImages() {
     let apiDispatcher = ApiDispatcher()
     
-    apiDispatcher.getImages(fromUrl: ApiDispatcher.getReceivedImagesUrl, complete: { image in
+    apiDispatcher.getImages(fromUrl: ApiDispatcher.getReceivedImagesUrl, complete: { imageName in
       
       /// only appends images which didn't exist before
-      if !self.receivedImageCollectionView.images.contains(where: {$0.name == image.name}) {
-        self.receivedImageCollectionView.images.append(image)
-        self.receivedImageCollectionView.view.reloadData()
+      if !self.receivedImageCollectionView.images.contains(where: {$0.name == imageName}) {
+        
+        do {
+          let imageUrl = ImageEntity.getImageUrl(imageName: imageName)
+          if let url = URL(string: imageUrl) {
+            let data = try Data(contentsOf: url)
+            let image = ImageEntity(image: UIImage(data: data)!, name: imageName)
+            image.rotate(by: 90)
+            
+            self.receivedImageCollectionView.images.append(image)
+            self.receivedImageCollectionView.view.reloadData()
+          }
+        } catch {
+          return
+        }
       }
     })
   }
