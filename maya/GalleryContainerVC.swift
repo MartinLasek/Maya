@@ -10,17 +10,14 @@ import UIKit
 
 class GalleryContainerVC: UIViewController {
   
-  var sentImageCollection: ImageCollectionView!
   var receivedImageCollection: ImageCollectionView!
   var galleryTabBar: GalleryTabView!
   let reuseIdentifier = "imageCell"
   
+  var sentImageCollectionVC: SentImageVC!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    sentImageCollection = ImageCollectionView(bounds: self.view.bounds, reuseIdentifier: reuseIdentifier)
-    sentImageCollection.setDelegate(delegate: self)
-    sentImageCollection.setDataSource(dataSource: self)
-    sentImageCollection.view.frame.size.height -= (tabBarController?.tabBar.frame.height)!
     
     receivedImageCollection = ImageCollectionView(bounds: self.view.bounds, reuseIdentifier: reuseIdentifier)
     receivedImageCollection.setDelegate(delegate: self)
@@ -33,7 +30,6 @@ class GalleryContainerVC: UIViewController {
     galleryTabBar.receivedTab.addTarget(self, action: #selector(showReceivedImageCollection), for: .touchUpInside)
     galleryTabBar.sentTab.setTitleColor(UIColor.black, for: .normal)
     
-    self.view.addSubview(sentImageCollection.view)
     self.view.addSubview(receivedImageCollection.view)
     self.view.addSubview(galleryTabBar.sentTab)
     self.view.addSubview(galleryTabBar.receivedTab)
@@ -43,46 +39,17 @@ class GalleryContainerVC: UIViewController {
     let collectionContainerView = CollectionContainerView(bounds: self.view.bounds)
     collectionContainerView.view.frame.size.height -= (tabBarController?.tabBar.frame.height)!
     
-    let controller = SentImageVC()
-    controller.view.frame.size.height = collectionContainerView.view.frame.height
-    controller.sentImageCollection.view.frame.size.height = collectionContainerView.view.frame.height
-    collectionContainerView.view.addSubview(controller.view)
-    controller.didMove(toParentViewController: self)
-    self.addChildViewController(controller)
+    sentImageCollectionVC = SentImageVC()
+    sentImageCollectionVC.view.frame.size.height = collectionContainerView.view.frame.height
+    sentImageCollectionVC.sentImageCollection.view.frame.size.height = collectionContainerView.view.frame.height
+    collectionContainerView.view.addSubview(sentImageCollectionVC.view)
+    sentImageCollectionVC.didMove(toParentViewController: self)
+    self.addChildViewController(sentImageCollectionVC)
     self.view.addSubview(collectionContainerView.view)
   }
   
   override func viewWillAppear(_ animated: Bool) {
     prepareView()
-    //getSentImages()
-  }
-  
-  func getSentImages() {
-    let apiDispatcher = ApiDispatcher()
-    
-    apiDispatcher.getImages(fromUrl: ApiDispatcher.getSentImagesUrl, complete: { imageName in
-      
-      /// only appends images which didn't exist before
-      if !self.sentImageCollection.images.contains(where: {$0.name == imageName}) {
-        
-        do {
-          let imageUrl = ImageEntity.getImageUrl(imageName: imageName)
-          if let url = URL(string: imageUrl) {
-            let data = try Data(contentsOf: url)
-            let image = ImageEntity(image: UIImage(data: data)!, name: imageName)
-            image.rotate(by: 90)
-            
-            self.sentImageCollection.images.append(image)
-            
-            DispatchQueue.main.async(execute: {
-              self.sentImageCollection.view.reloadData()
-            })
-          }
-        } catch {
-          return
-        }
-      }
-    })
   }
   
   func getReceivedImages() {
@@ -120,15 +87,14 @@ class GalleryContainerVC: UIViewController {
   
   func showSentImageCollection() {
     self.receivedImageCollection.view.isHidden = true
-    self.sentImageCollection.view.isHidden = false
+    self.sentImageCollectionVC.view.isHidden = false
     self.galleryTabBar.sentTab.setTitleColor(UIColor.black, for: .normal)
     self.galleryTabBar.receivedTab.setTitleColor(UIColor.gray, for: .normal)
-    getSentImages()
   }
   
   func showReceivedImageCollection() {
     self.receivedImageCollection.view.isHidden = false
-    self.sentImageCollection.view.isHidden = true
+    self.sentImageCollectionVC.view.isHidden = true
     self.galleryTabBar.sentTab.setTitleColor(UIColor.gray, for: .normal)
     self.galleryTabBar.receivedTab.setTitleColor(UIColor.black, for: .normal)
     getReceivedImages()
@@ -144,7 +110,7 @@ extension GalleryContainerVC: UICollectionViewDelegate, UICollectionViewDataSour
   
   // Specifying the number of cells in the given section
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return sentImageCollection.view.isHidden ? receivedImageCollection.images.count : sentImageCollection.images.count
+    return receivedImageCollection.images.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -155,7 +121,7 @@ extension GalleryContainerVC: UICollectionViewDelegate, UICollectionViewDataSour
   
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     let imageCell = cell as! ImageCollectionViewCell
-    let image = sentImageCollection.view.isHidden ? receivedImageCollection.images[indexPath.row].image : sentImageCollection.images[indexPath.row].image
+    let image = receivedImageCollection.images[indexPath.row].image
     imageCell.sentImageView.image = image
   }
   
