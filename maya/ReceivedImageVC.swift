@@ -1,5 +1,5 @@
 //
-//  SentImageVC.swift
+//  ReceivedImageVC.swift
 //  maya
 //
 //  Created by Martin Lasek on 10.03.17.
@@ -8,32 +8,32 @@
 
 import UIKit
 
-class SentImageVC: UIViewController {
-
-  var sentImageCollection: SentImageCollectionView!
-  let reuseIdentifier = "sentImageCell"
+class ReceivedImageVC: UIViewController {
+  
+  var receivedImageCollection: ReceivedImageCollectionView!
+  let reuseIdentifier = "receivedImageCell"
   
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    sentImageCollection = SentImageCollectionView(bounds: self.view.bounds, reuseIdentifier: reuseIdentifier)
-    sentImageCollection.setDelegate(delegate: self)
-    sentImageCollection.setDataSource(dataSource: self)
     
-    self.view.addSubview(sentImageCollection.view)
-  }
-
-  override func viewWillAppear(_ animated: Bool) {
-    getSentImages()
+    receivedImageCollection = ReceivedImageCollectionView(bounds: self.view.bounds, reuseIdentifier: reuseIdentifier)
+    receivedImageCollection.setDelegate(delegate: self)
+    receivedImageCollection.setDataSource(dataSource: self)
+    
+    self.view.addSubview(receivedImageCollection.view)
   }
   
-  func getSentImages() {
+  override func viewWillAppear(_ animated: Bool) {
+    getReceivedImages()
+  }
+  
+  func getReceivedImages() {
     let apiDispatcher = ApiDispatcher()
     
-    apiDispatcher.getImages(fromUrl: ApiDispatcher.getSentImagesUrl, complete: { imageName in
+    apiDispatcher.getImages(fromUrl: ApiDispatcher.getReceivedImagesUrl, complete: { imageName in
       
       /// only appends images which didn't exist before
-      if !self.sentImageCollection.images.contains(where: {$0.name == imageName}) {
+      if !self.receivedImageCollection.images.contains(where: {$0.name == imageName}) {
         
         do {
           let imageUrl = ImageEntity.getImageUrl(imageName: imageName)
@@ -42,10 +42,10 @@ class SentImageVC: UIViewController {
             let image = ImageEntity(image: UIImage(data: data)!, name: imageName)
             image.rotate(by: 90)
             
-            self.sentImageCollection.images.append(image)
+            self.receivedImageCollection.images.append(image)
             
             DispatchQueue.main.async(execute: {
-              self.sentImageCollection.view.reloadData()
+              self.receivedImageCollection.view.reloadData()
             })
           }
         } catch {
@@ -56,7 +56,7 @@ class SentImageVC: UIViewController {
   }
 }
 
-extension SentImageVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ReceivedImageVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   
   // Specifying the number of sections in the collectionView
   func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -65,19 +65,19 @@ extension SentImageVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
   
   // Specifying the number of cells in the given section
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return sentImageCollection.images.count
+    return receivedImageCollection.images.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SentImageCollectionViewCell
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ReceivedImageCollectionViewCell
     cell.awakeFromNib()
     return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-    let imageCell = cell as! SentImageCollectionViewCell
-    let image = sentImageCollection.images[indexPath.row].image
-    imageCell.sentImageView.image = image
+    let imageCell = cell as! ReceivedImageCollectionViewCell
+    let image = receivedImageCollection.images[indexPath.row].image
+    imageCell.receivedImageView.image = image
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

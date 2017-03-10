@@ -31,6 +31,9 @@
 		23F804FF1E7336C500FF2055 /* SentImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F804FE1E7336C500FF2055 /* SentImageCollectionViewCell.swift */; };
 		23F805011E734B3C00FF2055 /* SentImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F805001E734B3C00FF2055 /* SentImageCollectionView.swift */; };
 		23F805031E734FF200FF2055 /* CollectionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F805021E734FF200FF2055 /* CollectionContainerView.swift */; };
+		23F805051E73695D00FF2055 /* ReceivedImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F805041E73695D00FF2055 /* ReceivedImageVC.swift */; };
+		23F805071E736AB200FF2055 /* ReceivedImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F805061E736AB200FF2055 /* ReceivedImageCollectionView.swift */; };
+		23F805091E736B1900FF2055 /* ReceivedImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F805081E736B1900FF2055 /* ReceivedImageCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +63,9 @@
 		23F804FE1E7336C500FF2055 /* SentImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		23F805001E734B3C00FF2055 /* SentImageCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentImageCollectionView.swift; sourceTree = "<group>"; };
 		23F805021E734FF200FF2055 /* CollectionContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionContainerView.swift; sourceTree = "<group>"; };
+		23F805041E73695D00FF2055 /* ReceivedImageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedImageVC.swift; sourceTree = "<group>"; };
+		23F805061E736AB200FF2055 /* ReceivedImageCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedImageCollectionView.swift; sourceTree = "<group>"; };
+		23F805081E736B1900FF2055 /* ReceivedImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedImageCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +196,8 @@
 				23F804FE1E7336C500FF2055 /* SentImageCollectionViewCell.swift */,
 				23F805001E734B3C00FF2055 /* SentImageCollectionView.swift */,
 				23F805021E734FF200FF2055 /* CollectionContainerView.swift */,
+				23F805061E736AB200FF2055 /* ReceivedImageCollectionView.swift */,
+				23F805081E736B1900FF2055 /* ReceivedImageCollectionViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -199,6 +207,7 @@
 			children = (
 				23F53A101E58574800966C19 /* GalleryContainerVC.swift */,
 				23F804FC1E7309B700FF2055 /* SentImageVC.swift */,
+				23F805041E73695D00FF2055 /* ReceivedImageVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -331,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				234048D21E60ECB000DA9AA8 /* ImageCollectionViewCell.swift in Sources */,
+				23F805051E73695D00FF2055 /* ReceivedImageVC.swift in Sources */,
 				23F53A111E58574800966C19 /* GalleryContainerVC.swift in Sources */,
 				23F804FD1E7309B700FF2055 /* SentImageVC.swift in Sources */,
 				233A7B751E5A50C700440418 /* TakenPhotoView.swift in Sources */,
@@ -338,6 +348,7 @@
 				233A7B711E599C3F00440418 /* CameraViewResponse.swift in Sources */,
 				23B0CC9B1E5B70FE0038FE4C /* ApiDispatcher.swift in Sources */,
 				230320301E64B803002FC78E /* GalleryTabView.swift in Sources */,
+				23F805091E736B1900FF2055 /* ReceivedImageCollectionViewCell.swift in Sources */,
 				23F53A201E58786800966C19 /* WishlistViewController.swift in Sources */,
 				23B0CCA11E5B7EF20038FE4C /* ApiError.swift in Sources */,
 				23F804FF1E7336C500FF2055 /* SentImageCollectionViewCell.swift in Sources */,
@@ -348,6 +359,7 @@
 				23F805031E734FF200FF2055 /* CollectionContainerView.swift in Sources */,
 				233A7B6F1E599B9700440418 /* CameraViewRequest.swift in Sources */,
 				23C8D5001E5F052600E22BED /* ImageEntity.swift in Sources */,
+				23F805071E736AB200FF2055 /* ReceivedImageCollectionView.swift in Sources */,
 				23B0CC9E1E5B71600038FE4C /* SendImageRequest.swift in Sources */,
 				23F53A161E5857CF00966C19 /* ImageCollectionView.swift in Sources */,
 				23F539FF1E565D4A00966C19 /* AppDelegate.swift in Sources */,
