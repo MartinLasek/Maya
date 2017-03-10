@@ -13,15 +13,16 @@ class GalleryContainerVC: UIViewController {
   var sentImageCollection: ImageCollectionView!
   var receivedImageCollection: ImageCollectionView!
   var galleryTabBar: GalleryTabView!
+  let reuseIdentifier = "imageCell"
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    sentImageCollection = ImageCollectionView(bounds: self.view.bounds)
+    sentImageCollection = ImageCollectionView(bounds: self.view.bounds, reuseIdentifier: reuseIdentifier)
     sentImageCollection.setDelegate(delegate: self)
     sentImageCollection.setDataSource(dataSource: self)
     sentImageCollection.view.frame.size.height -= (tabBarController?.tabBar.frame.height)!
     
-    receivedImageCollection = ImageCollectionView(bounds: self.view.bounds)
+    receivedImageCollection = ImageCollectionView(bounds: self.view.bounds, reuseIdentifier: reuseIdentifier)
     receivedImageCollection.setDelegate(delegate: self)
     receivedImageCollection.setDataSource(dataSource: self)
     receivedImageCollection.view.frame.size.height -= (tabBarController?.tabBar.frame.height)!
@@ -36,11 +37,24 @@ class GalleryContainerVC: UIViewController {
     self.view.addSubview(receivedImageCollection.view)
     self.view.addSubview(galleryTabBar.sentTab)
     self.view.addSubview(galleryTabBar.receivedTab)
+    
+    /* BREAKING CHANGES */
+    
+    let collectionContainerView = CollectionContainerView(bounds: self.view.bounds)
+    collectionContainerView.view.frame.size.height -= (tabBarController?.tabBar.frame.height)!
+    
+    let controller = SentImageVC()
+    controller.view.frame.size.height = collectionContainerView.view.frame.height
+    controller.sentImageCollection.view.frame.size.height = collectionContainerView.view.frame.height
+    collectionContainerView.view.addSubview(controller.view)
+    controller.didMove(toParentViewController: self)
+    self.addChildViewController(controller)
+    self.view.addSubview(collectionContainerView.view)
   }
   
   override func viewWillAppear(_ animated: Bool) {
     prepareView()
-    getSentImages()
+    //getSentImages()
   }
   
   func getSentImages() {
@@ -134,7 +148,7 @@ extension GalleryContainerVC: UICollectionViewDelegate, UICollectionViewDataSour
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! ImageCollectionViewCell
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ImageCollectionViewCell
     cell.awakeFromNib()
     return cell
   }
