@@ -23,7 +23,7 @@
 		23F53A041E565D4A00966C19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F53A021E565D4A00966C19 /* Main.storyboard */; };
 		23F53A061E565D4A00966C19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23F53A051E565D4A00966C19 /* Assets.xcassets */; };
 		23F53A091E565D4A00966C19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F53A071E565D4A00966C19 /* LaunchScreen.storyboard */; };
-		23F53A111E58574800966C19 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F53A101E58574800966C19 /* GalleryViewController.swift */; };
+		23F53A111E58574800966C19 /* GalleryContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F53A101E58574800966C19 /* GalleryContainerVC.swift */; };
 		23F53A161E5857CF00966C19 /* ImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F53A151E5857CF00966C19 /* ImageCollectionView.swift */; };
 		23F53A1B1E585E5D00966C19 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F53A1A1E585E5D00966C19 /* CameraViewController.swift */; };
 		23F53A201E58786800966C19 /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F53A1F1E58786800966C19 /* WishlistViewController.swift */; };
@@ -48,7 +48,7 @@
 		23F53A051E565D4A00966C19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23F53A081E565D4A00966C19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23F53A0A1E565D4A00966C19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		23F53A101E58574800966C19 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		23F53A101E58574800966C19 /* GalleryContainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryContainerVC.swift; sourceTree = "<group>"; };
 		23F53A151E5857CF00966C19 /* ImageCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionView.swift; sourceTree = "<group>"; };
 		23F53A1A1E585E5D00966C19 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		23F53A1F1E58786800966C19 /* WishlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 		23F53A141E5857BA00966C19 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				23F53A101E58574800966C19 /* GalleryViewController.swift */,
+				23F53A101E58574800966C19 /* GalleryContainerVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -319,7 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				234048D21E60ECB000DA9AA8 /* ImageCollectionViewCell.swift in Sources */,
-				23F53A111E58574800966C19 /* GalleryViewController.swift in Sources */,
+				23F53A111E58574800966C19 /* GalleryContainerVC.swift in Sources */,
 				233A7B751E5A50C700440418 /* TakenPhotoView.swift in Sources */,
 				233A7B6B1E599A4900440418 /* CameraView.swift in Sources */,
 				233A7B711E599C3F00440418 /* CameraViewResponse.swift in Sources */,

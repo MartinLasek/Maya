@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GalleryViewController: UIViewController {
+class GalleryContainerViewController: UIViewController {
   
   var sentImageCollection: ImageCollectionView!
   var receivedImageCollection: ImageCollectionView!
@@ -121,7 +121,7 @@ class GalleryViewController: UIViewController {
   }
 }
 
-extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension GalleryContainerViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   
   // Specifying the number of sections in the collectionView
   func numberOfSections(in collectionView: UICollectionView) -> Int {

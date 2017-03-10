@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
     let tabBarController = UITabBarController()
-    let galleryViewController = GalleryViewController()
+    let galleryViewController = GalleryContainerVC()
     let cameraViewController = CameraViewController()
     let wishlistViewController = WishListViewController()
     let controllers = [galleryViewController, cameraViewController, wishlistViewController]
