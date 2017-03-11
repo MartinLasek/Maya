@@ -11,7 +11,6 @@ import UIKit
 class GalleryContainerVC: UIViewController {
   
   var galleryTabBar: GalleryTabView!
-  
   var sentImageCollectionVC: SentImageVC!
   var receivedImageCollectionVC: ReceivedImageVC!
   
@@ -22,8 +21,6 @@ class GalleryContainerVC: UIViewController {
     galleryTabBar.sentTab.addTarget(self, action: #selector(showSentImageCollection), for: .touchUpInside)
     galleryTabBar.receivedTab.addTarget(self, action: #selector(showReceivedImageCollection), for: .touchUpInside)
     galleryTabBar.sentTab.setTitleColor(UIColor.black, for: .normal)
-    
-    /* BREAKING CHANGES */
     
     let collectionContainerView = CollectionContainerView(bounds: self.view.bounds)
     collectionContainerView.view.frame.size.height -= (tabBarController?.tabBar.frame.height)!

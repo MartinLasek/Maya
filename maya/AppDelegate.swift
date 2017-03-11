@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let tabBarController = UITabBarController()
     let galleryViewController = GalleryContainerVC()
-    let cameraViewController = CameraViewController()
+    let cameraViewController = CameraContainerVC()
     let wishlistViewController = WishListViewController()
     let controllers = [galleryViewController, cameraViewController, wishlistViewController]
     

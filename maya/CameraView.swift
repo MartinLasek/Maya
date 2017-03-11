@@ -57,6 +57,5 @@ class CameraView {
   func setupButtons() {
     shutterButton.layer.frame = CGRect(x: self.bounds.size.width / 2 - 30, y: self.bounds.size.height - 130, width: CGFloat(60), height: CGFloat(60))
     shutterButton.setImage(shutterImage, for: .normal)
-    view.addSubview(shutterButton)
   }
 }
