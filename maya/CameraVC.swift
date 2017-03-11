@@ -27,6 +27,14 @@ class CameraVC: UIViewController {
   override func viewWillDisappear(_ animated: Bool) {
     self.cameraView.captureSession.stopRunning()
   }
+  
+  func unhideView() {
+    self.view.isHidden = false
+  }
+  
+  func hideView() {
+    self.view.isHidden = true
+  }
 }
 
 extension CameraVC: AVCapturePhotoCaptureDelegate {

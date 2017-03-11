@@ -33,6 +33,9 @@
 		23F805071E736AB200FF2055 /* ReceivedImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F805061E736AB200FF2055 /* ReceivedImageCollectionView.swift */; };
 		23F805091E736B1900FF2055 /* ReceivedImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F805081E736B1900FF2055 /* ReceivedImageCollectionViewCell.swift */; };
 		23F8050B1E747C5900FF2055 /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F8050A1E747C5900FF2055 /* CameraVC.swift */; };
+		23F8050D1E7495A300FF2055 /* TakenPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F8050C1E7495A300FF2055 /* TakenPhotoVC.swift */; };
+		23F8050F1E74B17E00FF2055 /* ReceivedPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F8050E1E74B17E00FF2055 /* ReceivedPhotoView.swift */; };
+		23F805111E74B3B700FF2055 /* ReceivedPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F805101E74B3B700FF2055 /* ReceivedPhotoVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +67,9 @@
 		23F805061E736AB200FF2055 /* ReceivedImageCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedImageCollectionView.swift; sourceTree = "<group>"; };
 		23F805081E736B1900FF2055 /* ReceivedImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		23F8050A1E747C5900FF2055 /* CameraVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
+		23F8050C1E7495A300FF2055 /* TakenPhotoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakenPhotoVC.swift; sourceTree = "<group>"; };
+		23F8050E1E74B17E00FF2055 /* ReceivedPhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedPhotoView.swift; sourceTree = "<group>"; };
+		23F805101E74B3B700FF2055 /* ReceivedPhotoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedPhotoVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,7 @@
 			children = (
 				233A7B6A1E599A4900440418 /* CameraView.swift */,
 				233A7B741E5A50C700440418 /* TakenPhotoView.swift */,
+				23F8050E1E74B17E00FF2055 /* ReceivedPhotoView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -224,6 +231,8 @@
 			children = (
 				23F53A1A1E585E5D00966C19 /* CameraContainerVC.swift */,
 				23F8050A1E747C5900FF2055 /* CameraVC.swift */,
+				23F8050C1E7495A300FF2055 /* TakenPhotoVC.swift */,
+				23F805101E74B3B700FF2055 /* ReceivedPhotoVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -336,9 +345,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23F805111E74B3B700FF2055 /* ReceivedPhotoVC.swift in Sources */,
 				23F805051E73695D00FF2055 /* ReceivedImageVC.swift in Sources */,
+				23F8050F1E74B17E00FF2055 /* ReceivedPhotoView.swift in Sources */,
 				23F53A111E58574800966C19 /* GalleryContainerVC.swift in Sources */,
 				23F804FD1E7309B700FF2055 /* SentImageVC.swift in Sources */,
+				23F8050D1E7495A300FF2055 /* TakenPhotoVC.swift in Sources */,
 				233A7B751E5A50C700440418 /* TakenPhotoView.swift in Sources */,
 				233A7B6B1E599A4900440418 /* CameraView.swift in Sources */,
 				233A7B711E599C3F00440418 /* CameraViewResponse.swift in Sources */,
