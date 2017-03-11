@@ -12,7 +12,6 @@
 		233A7B6F1E599B9700440418 /* CameraViewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233A7B6E1E599B9700440418 /* CameraViewRequest.swift */; };
 		233A7B711E599C3F00440418 /* CameraViewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233A7B701E599C3F00440418 /* CameraViewResponse.swift */; };
 		233A7B751E5A50C700440418 /* TakenPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233A7B741E5A50C700440418 /* TakenPhotoView.swift */; };
-		234048D21E60ECB000DA9AA8 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234048D11E60ECB000DA9AA8 /* ImageCollectionViewCell.swift */; };
 		239E0E8B1E6358B600B736D3 /* BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239E0E8A1E6358B600B736D3 /* BackgroundColor.swift */; };
 		23B0CC9B1E5B70FE0038FE4C /* ApiDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B0CC9A1E5B70FE0038FE4C /* ApiDispatcher.swift */; };
 		23B0CC9E1E5B71600038FE4C /* SendImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B0CC9D1E5B71600038FE4C /* SendImageRequest.swift */; };
@@ -24,7 +23,6 @@
 		23F53A061E565D4A00966C19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23F53A051E565D4A00966C19 /* Assets.xcassets */; };
 		23F53A091E565D4A00966C19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F53A071E565D4A00966C19 /* LaunchScreen.storyboard */; };
 		23F53A111E58574800966C19 /* GalleryContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F53A101E58574800966C19 /* GalleryContainerVC.swift */; };
-		23F53A161E5857CF00966C19 /* ImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F53A151E5857CF00966C19 /* ImageCollectionView.swift */; };
 		23F53A1B1E585E5D00966C19 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F53A1A1E585E5D00966C19 /* CameraViewController.swift */; };
 		23F53A201E58786800966C19 /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F53A1F1E58786800966C19 /* WishlistViewController.swift */; };
 		23F804FD1E7309B700FF2055 /* SentImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F804FC1E7309B700FF2055 /* SentImageVC.swift */; };
@@ -42,7 +40,6 @@
 		233A7B6E1E599B9700440418 /* CameraViewRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewRequest.swift; sourceTree = "<group>"; };
 		233A7B701E599C3F00440418 /* CameraViewResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewResponse.swift; sourceTree = "<group>"; };
 		233A7B741E5A50C700440418 /* TakenPhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakenPhotoView.swift; sourceTree = "<group>"; };
-		234048D11E60ECB000DA9AA8 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		239E0E8A1E6358B600B736D3 /* BackgroundColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundColor.swift; sourceTree = "<group>"; };
 		23B0CC9A1E5B70FE0038FE4C /* ApiDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiDispatcher.swift; sourceTree = "<group>"; };
 		23B0CC9D1E5B71600038FE4C /* SendImageRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendImageRequest.swift; sourceTree = "<group>"; };
@@ -56,7 +53,6 @@
 		23F53A081E565D4A00966C19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23F53A0A1E565D4A00966C19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23F53A101E58574800966C19 /* GalleryContainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryContainerVC.swift; sourceTree = "<group>"; };
-		23F53A151E5857CF00966C19 /* ImageCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionView.swift; sourceTree = "<group>"; };
 		23F53A1A1E585E5D00966C19 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		23F53A1F1E58786800966C19 /* WishlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
 		23F804FC1E7309B700FF2055 /* SentImageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentImageVC.swift; sourceTree = "<group>"; };
@@ -190,8 +186,6 @@
 		23F53A131E5857AF00966C19 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				23F53A151E5857CF00966C19 /* ImageCollectionView.swift */,
-				234048D11E60ECB000DA9AA8 /* ImageCollectionViewCell.swift */,
 				2303202F1E64B803002FC78E /* GalleryTabView.swift */,
 				23F804FE1E7336C500FF2055 /* SentImageCollectionViewCell.swift */,
 				23F805001E734B3C00FF2055 /* SentImageCollectionView.swift */,
@@ -339,7 +333,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				234048D21E60ECB000DA9AA8 /* ImageCollectionViewCell.swift in Sources */,
 				23F805051E73695D00FF2055 /* ReceivedImageVC.swift in Sources */,
 				23F53A111E58574800966C19 /* GalleryContainerVC.swift in Sources */,
 				23F804FD1E7309B700FF2055 /* SentImageVC.swift in Sources */,
@@ -361,7 +354,6 @@
 				23C8D5001E5F052600E22BED /* ImageEntity.swift in Sources */,
 				23F805071E736AB200FF2055 /* ReceivedImageCollectionView.swift in Sources */,
 				23B0CC9E1E5B71600038FE4C /* SendImageRequest.swift in Sources */,
-				23F53A161E5857CF00966C19 /* ImageCollectionView.swift in Sources */,
 				23F539FF1E565D4A00966C19 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

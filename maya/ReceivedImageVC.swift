@@ -15,11 +15,9 @@ class ReceivedImageVC: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     receivedImageCollection = ReceivedImageCollectionView(bounds: self.view.bounds, reuseIdentifier: reuseIdentifier)
     receivedImageCollection.setDelegate(delegate: self)
     receivedImageCollection.setDataSource(dataSource: self)
-    
     self.view.addSubview(receivedImageCollection.view)
   }
   

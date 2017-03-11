@@ -15,11 +15,9 @@ class SentImageVC: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-
     sentImageCollection = SentImageCollectionView(bounds: self.view.bounds, reuseIdentifier: reuseIdentifier)
     sentImageCollection.setDelegate(delegate: self)
     sentImageCollection.setDataSource(dataSource: self)
-    
     self.view.addSubview(sentImageCollection.view)
   }
 
