@@ -23,7 +23,6 @@ class WishlistCollectionView {
     collectionView.backgroundColor = UIColor.clear
     
     /** TESTING DATA **/
-    
     for index in 1...23 {
       wishs.append(WishlistEntity(id: index, votes: Int(arc4random_uniform(100)), description: "I'd love to have transitions between all view changes"))
     }

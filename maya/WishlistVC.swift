@@ -12,6 +12,7 @@ class WishlistVC: UIViewController {
 
   var wishlistCollection: WishlistCollectionView!
   let reuseIdentifier = "wishCell"
+  var cellHeights = [CGFloat]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -43,6 +44,8 @@ extension WishlistVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     let wishCell = cell as! WishlistCollectionViewCell
     wishCell.text.text = wishlistCollection.wishs[indexPath.row].description
+    // sizeToFit - needed to change bound size according to its content
+    wishCell.text.sizeToFit()
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

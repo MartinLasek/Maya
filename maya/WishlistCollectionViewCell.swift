@@ -11,14 +11,21 @@ import UIKit
 class WishlistCollectionViewCell: UICollectionViewCell {
   
   var wishView: UIView!
-  var text: UITextField!
+  var text: UILabel!
   
   override func awakeFromNib() {
-    wishView = UIView(frame: contentView.frame)
-    wishView.clipsToBounds = true
+    wishView = UIView(frame: contentView.bounds)
+    wishView.frame.size.width -= 10
+    wishView.frame.origin.x += 5
     
-    text = UITextField(frame: CGRect(x: 0, y: 0, width: contentView.frame.width, height: 50))
+    text = UILabel()
+    text.layer.cornerRadius = 5
+    text.layer.masksToBounds = true
     text.backgroundColor = UIColor.white
+    // numberOfLines = 0 - needed to break by word
+    text.numberOfLines = 0
+    // width - needed to break by word
+    text.frame.size.width = contentView.bounds.width * 0.75
     
     wishView.addSubview(text)
     contentView.addSubview(wishView)

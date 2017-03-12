@@ -13,7 +13,7 @@ class WishlistContainerVC: UIViewController {
   var viewTitle: ViewTitle!
   var wishlistVC: WishlistVC!
   
-  override func viewWillAppear(_ animated: Bool) {
+  override func viewDidLoad() {
     prepareView()
     
     wishlistVC = WishlistVC()
