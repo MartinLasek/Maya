@@ -12,12 +12,9 @@ class SentImageCollectionView {
   
   var layout = UICollectionViewFlowLayout()
   var images = [ImageEntity]()
-  let bounds: CGRect
   var view: UICollectionView
   
   init(bounds: CGRect, reuseIdentifier: String) {
-    self.bounds = bounds
-    
     layout.minimumLineSpacing = 0
     layout.minimumInteritemSpacing = 0
     

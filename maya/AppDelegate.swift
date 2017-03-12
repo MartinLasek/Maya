@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let tabBarController = UITabBarController()
     let galleryViewController = GalleryContainerVC()
     let cameraViewController = CameraContainerVC()
-    let wishlistViewController = WishListViewController()
+    let wishlistViewController = WishlistContainerVC()
     let controllers = [galleryViewController, cameraViewController, wishlistViewController]
     
     tabBarController.tabBar.backgroundColor = UIColor.white
