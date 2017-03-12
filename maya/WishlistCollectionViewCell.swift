@@ -14,20 +14,34 @@ class WishlistCollectionViewCell: UICollectionViewCell {
   var text: UILabel!
   
   override func awakeFromNib() {
-    wishView = UIView(frame: contentView.bounds)
-    wishView.frame.size.width -= 10
-    wishView.frame.origin.x += 5
-    
-    text = UILabel()
-    text.layer.cornerRadius = 5
-    text.layer.masksToBounds = true
-    text.backgroundColor = UIColor.white
-    // numberOfLines = 0 - needed to break by word
-    text.numberOfLines = 0
-    // width - needed to break by word
-    text.frame.size.width = contentView.bounds.width * 0.75
+    prepareWishView()
+    prepareText()
     
     wishView.addSubview(text)
     contentView.addSubview(wishView)
+  }
+  
+  func prepareWishView() {
+    wishView = UIView(frame: contentView.frame)
+    wishView.frame.size.width -= 20
+    wishView.frame.origin.x += 10
+    wishView.layer.cornerRadius = 5
+    wishView.backgroundColor = UIColor.white
+  }
+  
+  func prepareText() {
+    text = UILabel()
+    text.layer.masksToBounds = true
+    // numberOfLines = 0 - needed to break by word
+    text.numberOfLines = 4
+    // width - needed to break by word
+    text.frame.size.width = contentView.bounds.width * 0.75 - 20
+    text.frame.origin.x = contentView.bounds.width * 0.25
+  }
+  
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    // sizeToFit - needed to change bound size according to its content
+    text.sizeToFit()
   }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewTitle {
+class WishlistViewTitle {
   
   var title = UILabel()
   let bounds: CGRect

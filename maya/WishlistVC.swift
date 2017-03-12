@@ -12,7 +12,6 @@ class WishlistVC: UIViewController {
 
   var wishlistCollection: WishlistCollectionView!
   let reuseIdentifier = "wishCell"
-  var cellHeights = [CGFloat]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -20,6 +19,17 @@ class WishlistVC: UIViewController {
     wishlistCollection.setDelegate(delegate: self)
     wishlistCollection.setDataSource(dataSource: self)
     self.view.addSubview(wishlistCollection.collectionView)
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+
+    /** TESTING DATA **/
+    for index in 1...23 {
+      self.wishlistCollection.wishs.append(WishlistEntity(id: index, votes: Int(arc4random_uniform(100)), description: "I'd love to have transitions between all view changes"))
+    }
+
+    self.wishlistCollection.collectionView.reloadData()
   }
 }
 
@@ -44,11 +54,9 @@ extension WishlistVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     let wishCell = cell as! WishlistCollectionViewCell
     wishCell.text.text = wishlistCollection.wishs[indexPath.row].description
-    // sizeToFit - needed to change bound size according to its content
-    wishCell.text.sizeToFit()
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: self.view.frame.width, height: 50)
+    return CGSize(width: self.view.frame.width, height: 82)
   }
 }

@@ -36,7 +36,7 @@
 		23F8050D1E7495A300FF2055 /* TakenPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F8050C1E7495A300FF2055 /* TakenPhotoVC.swift */; };
 		23F8050F1E74B17E00FF2055 /* ReceivedPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F8050E1E74B17E00FF2055 /* ReceivedPhotoView.swift */; };
 		23F805111E74B3B700FF2055 /* ReceivedPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F805101E74B3B700FF2055 /* ReceivedPhotoVC.swift */; };
-		23F805141E75721F00FF2055 /* ViewTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F805131E75721F00FF2055 /* ViewTitle.swift */; };
+		23F805141E75721F00FF2055 /* WishlistViewTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F805131E75721F00FF2055 /* WishlistViewTitle.swift */; };
 		23F805161E75774500FF2055 /* WishlistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F805151E75774500FF2055 /* WishlistVC.swift */; };
 		23F805181E75778100FF2055 /* WishlistCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F805171E75778100FF2055 /* WishlistCollectionView.swift */; };
 		23F8051C1E7577D800FF2055 /* WishlistEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F8051B1E7577D800FF2055 /* WishlistEntity.swift */; };
@@ -75,7 +75,7 @@
 		23F8050C1E7495A300FF2055 /* TakenPhotoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakenPhotoVC.swift; sourceTree = "<group>"; };
 		23F8050E1E74B17E00FF2055 /* ReceivedPhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedPhotoView.swift; sourceTree = "<group>"; };
 		23F805101E74B3B700FF2055 /* ReceivedPhotoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedPhotoVC.swift; sourceTree = "<group>"; };
-		23F805131E75721F00FF2055 /* ViewTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTitle.swift; sourceTree = "<group>"; };
+		23F805131E75721F00FF2055 /* WishlistViewTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistViewTitle.swift; sourceTree = "<group>"; };
 		23F805151E75774500FF2055 /* WishlistVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistVC.swift; sourceTree = "<group>"; };
 		23F805171E75778100FF2055 /* WishlistCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistCollectionView.swift; sourceTree = "<group>"; };
 		23F8051B1E7577D800FF2055 /* WishlistEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistEntity.swift; sourceTree = "<group>"; };
@@ -288,7 +288,7 @@
 		23F805121E756D6C00FF2055 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				23F805131E75721F00FF2055 /* ViewTitle.swift */,
+				23F805131E75721F00FF2055 /* WishlistViewTitle.swift */,
 				23F805171E75778100FF2055 /* WishlistCollectionView.swift */,
 				23F8051D1E758DEB00FF2055 /* WishlistCollectionViewCell.swift */,
 			);
@@ -382,7 +382,7 @@
 				23F53A111E58574800966C19 /* GalleryContainerVC.swift in Sources */,
 				23F804FD1E7309B700FF2055 /* SentImageVC.swift in Sources */,
 				23F8050D1E7495A300FF2055 /* TakenPhotoVC.swift in Sources */,
-				23F805141E75721F00FF2055 /* ViewTitle.swift in Sources */,
+				23F805141E75721F00FF2055 /* WishlistViewTitle.swift in Sources */,
 				233A7B751E5A50C700440418 /* TakenPhotoView.swift in Sources */,
 				23F805181E75778100FF2055 /* WishlistCollectionView.swift in Sources */,
 				233A7B6B1E599A4900440418 /* CameraView.swift in Sources */,

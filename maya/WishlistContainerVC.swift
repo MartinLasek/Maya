@@ -10,7 +10,7 @@ import UIKit
 
 class WishlistContainerVC: UIViewController {
   
-  var viewTitle: ViewTitle!
+  var viewTitle: WishlistViewTitle!
   var wishlistVC: WishlistVC!
   
   override func viewDidLoad() {
@@ -29,7 +29,7 @@ class WishlistContainerVC: UIViewController {
     let backgroundColor = BackgroundColor(bounds: self.view.bounds)
     self.view.layer.insertSublayer(backgroundColor.prepareGradient(), at: 0)
     
-    self.viewTitle = ViewTitle(bounds: self.view.bounds)
+    self.viewTitle = WishlistViewTitle(bounds: self.view.bounds)
     self.view.addSubview(self.viewTitle.title)
   }
 }

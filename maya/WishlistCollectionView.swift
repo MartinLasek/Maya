@@ -12,20 +12,12 @@ class WishlistCollectionView {
   
   var layout = UICollectionViewFlowLayout()
   var wishs = [WishlistEntity]()
-  let bounds: CGRect
   var collectionView: UICollectionView
   
   init(bounds: CGRect, reuseIdentifier: String) {
-    self.bounds = bounds
-    
     collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height), collectionViewLayout: layout)
     collectionView.register(WishlistCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     collectionView.backgroundColor = UIColor.clear
-    
-    /** TESTING DATA **/
-    for index in 1...23 {
-      wishs.append(WishlistEntity(id: index, votes: Int(arc4random_uniform(100)), description: "I'd love to have transitions between all view changes"))
-    }
   }
   
   func setDelegate(delegate: UICollectionViewDelegate) {
