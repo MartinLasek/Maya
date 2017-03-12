@@ -11,18 +11,18 @@ import UIKit
 class WishlistContainerVC: UIViewController {
   
   var viewTitle: WishlistViewTitle!
-  var wishlistVC: WishlistVC!
+  var wishlistTableVC: WishlistTableVC!
   
   override func viewDidLoad() {
     prepareView()
     
-    wishlistVC = WishlistVC()
-    wishlistVC.view.frame.size.height = self.view.bounds.height * 0.66
-    wishlistVC.view.frame.origin.y = self.view.bounds.height * 0.34
-    wishlistVC.didMove(toParentViewController: self)
+    wishlistTableVC = WishlistTableVC()
+    wishlistTableVC.view.frame.size.height = self.view.bounds.height * 0.66
+    wishlistTableVC.view.frame.origin.y = self.view.bounds.height * 0.34 - (tabBarController?.tabBar.frame.height)!
+    wishlistTableVC.didMove(toParentViewController: self)
     
-    self.addChildViewController(wishlistVC)
-    self.view.addSubview(wishlistVC.view)
+    self.addChildViewController(wishlistTableVC)
+    self.view.addSubview(wishlistTableVC.view)
   }
   
   func prepareView() {

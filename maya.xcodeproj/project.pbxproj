@@ -37,10 +37,9 @@
 		23F8050F1E74B17E00FF2055 /* ReceivedPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F8050E1E74B17E00FF2055 /* ReceivedPhotoView.swift */; };
 		23F805111E74B3B700FF2055 /* ReceivedPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F805101E74B3B700FF2055 /* ReceivedPhotoVC.swift */; };
 		23F805141E75721F00FF2055 /* WishlistViewTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F805131E75721F00FF2055 /* WishlistViewTitle.swift */; };
-		23F805161E75774500FF2055 /* WishlistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F805151E75774500FF2055 /* WishlistVC.swift */; };
-		23F805181E75778100FF2055 /* WishlistCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F805171E75778100FF2055 /* WishlistCollectionView.swift */; };
 		23F8051C1E7577D800FF2055 /* WishlistEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F8051B1E7577D800FF2055 /* WishlistEntity.swift */; };
-		23F8051E1E758DEB00FF2055 /* WishlistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F8051D1E758DEB00FF2055 /* WishlistCollectionViewCell.swift */; };
+		23F805201E75F30D00FF2055 /* WishlistTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F8051F1E75F30D00FF2055 /* WishlistTableVC.swift */; };
+		23F805221E75FD8300FF2055 /* WishlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F805211E75FD8300FF2055 /* WishlistTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,10 +75,9 @@
 		23F8050E1E74B17E00FF2055 /* ReceivedPhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedPhotoView.swift; sourceTree = "<group>"; };
 		23F805101E74B3B700FF2055 /* ReceivedPhotoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceivedPhotoVC.swift; sourceTree = "<group>"; };
 		23F805131E75721F00FF2055 /* WishlistViewTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistViewTitle.swift; sourceTree = "<group>"; };
-		23F805151E75774500FF2055 /* WishlistVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistVC.swift; sourceTree = "<group>"; };
-		23F805171E75778100FF2055 /* WishlistCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistCollectionView.swift; sourceTree = "<group>"; };
 		23F8051B1E7577D800FF2055 /* WishlistEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistEntity.swift; sourceTree = "<group>"; };
-		23F8051D1E758DEB00FF2055 /* WishlistCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistCollectionViewCell.swift; sourceTree = "<group>"; };
+		23F8051F1E75F30D00FF2055 /* WishlistTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistTableVC.swift; sourceTree = "<group>"; };
+		23F805211E75FD8300FF2055 /* WishlistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,7 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				23F53A1F1E58786800966C19 /* WishlistContainerVC.swift */,
-				23F805151E75774500FF2055 /* WishlistVC.swift */,
+				23F8051F1E75F30D00FF2055 /* WishlistTableVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -289,8 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				23F805131E75721F00FF2055 /* WishlistViewTitle.swift */,
-				23F805171E75778100FF2055 /* WishlistCollectionView.swift */,
-				23F8051D1E758DEB00FF2055 /* WishlistCollectionViewCell.swift */,
+				23F805211E75FD8300FF2055 /* WishlistTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -384,12 +381,13 @@
 				23F8050D1E7495A300FF2055 /* TakenPhotoVC.swift in Sources */,
 				23F805141E75721F00FF2055 /* WishlistViewTitle.swift in Sources */,
 				233A7B751E5A50C700440418 /* TakenPhotoView.swift in Sources */,
-				23F805181E75778100FF2055 /* WishlistCollectionView.swift in Sources */,
+				23F805221E75FD8300FF2055 /* WishlistTableViewCell.swift in Sources */,
 				233A7B6B1E599A4900440418 /* CameraView.swift in Sources */,
 				233A7B711E599C3F00440418 /* CameraViewResponse.swift in Sources */,
 				23B0CC9B1E5B70FE0038FE4C /* ApiDispatcher.swift in Sources */,
 				230320301E64B803002FC78E /* GalleryTabView.swift in Sources */,
 				23F805091E736B1900FF2055 /* ReceivedImageCollectionViewCell.swift in Sources */,
+				23F805201E75F30D00FF2055 /* WishlistTableVC.swift in Sources */,
 				23F53A201E58786800966C19 /* WishlistContainerVC.swift in Sources */,
 				23B0CCA11E5B7EF20038FE4C /* ApiError.swift in Sources */,
 				23F804FF1E7336C500FF2055 /* SentImageCollectionViewCell.swift in Sources */,
@@ -401,12 +399,10 @@
 				23F53A011E565D4A00966C19 /* ViewController.swift in Sources */,
 				23F805031E734FF200FF2055 /* CollectionContainerView.swift in Sources */,
 				233A7B6F1E599B9700440418 /* CameraViewRequest.swift in Sources */,
-				23F805161E75774500FF2055 /* WishlistVC.swift in Sources */,
 				23C8D5001E5F052600E22BED /* ImageEntity.swift in Sources */,
 				23F805071E736AB200FF2055 /* ReceivedImageCollectionView.swift in Sources */,
 				23B0CC9E1E5B71600038FE4C /* SendImageRequest.swift in Sources */,
 				23F539FF1E565D4A00966C19 /* AppDelegate.swift in Sources */,
-				23F8051E1E758DEB00FF2055 /* WishlistCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
