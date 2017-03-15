@@ -29,9 +29,26 @@ class WishlistTableVC: UITableViewController {
     return wishes.count
   }
   
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return UITableViewAutomaticDimension
+  }
+  
+  override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    return UITableViewAutomaticDimension
+  }
+  
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-    cell.textLabel?.text = wishes[indexPath.row].description
-    return cell
+    
+    let cells = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+    cells.textLabel?.text = wishes[indexPath.row].description
+    cells.textLabel?.numberOfLines = 0
+    
+    let wishVotes = UILabel(frame: CGRect(x: 0, y: 0, width: cells.contentView.frame.size.width * 0.25, height: cells.contentView.frame.size.height))
+    wishVotes.text = String(wishes[indexPath.row].votes)
+    wishVotes.textAlignment = .center
+    
+    cells.accessoryView = wishVotes
+    
+    return cells
   }
 }
