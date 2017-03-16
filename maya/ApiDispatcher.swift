@@ -12,10 +12,15 @@ import UIKit
 class ApiDispatcher {
   
   static let baseUrl = "http://192.168.2.141:8080"
+  
+  /// MARK: Image Api Endpoints
   static let postImageUrl = baseUrl + "/image/new"
   static let getRandomImageUrl = baseUrl + "/image/random"
   static let getSentImagesUrl = baseUrl + "/image/list/sent"
   static let getReceivedImagesUrl = baseUrl + "/image/list/received"
+  
+  /// MARK: Wish Api Endpoints
+  static let getWishlistUrl = baseUrl + "/wish/list"
   
   /// Sends taken image as bytes to API
   func postImage(req: SendImageRequest) {
@@ -56,7 +61,7 @@ class ApiDispatcher {
     let session = URLSession.shared
     let task = session.dataTask(with: httpRequest) { (data, response, error) in
       
-      if let data = data, let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? Dictionary<String,AnyObject> {
+      if let data = data, let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? Dictionary<String, AnyObject> {
         if let imageName = json["image"] as? String {
           do {
             if let url = URL(string: ImageEntity.getImageUrl(imageName: imageName)) {
@@ -103,6 +108,28 @@ class ApiDispatcher {
       }
     }
     
+    task.resume()
+  }
+  
+  func getWishlist(complete: @escaping ((WishlistEntity) -> ())) {
+    let url = URL(string: ApiDispatcher.getWishlistUrl)
+    var httpRequest = URLRequest(url: url!)
+    httpRequest.httpMethod = "GET"
+
+    let session = URLSession.shared
+    let task = session.dataTask(with: httpRequest) { (data, response, error) in
+      
+      if let data = data, let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [Dictionary<String, AnyObject>] {
+        
+        for wish in json {
+          
+          if let wishId = wish["id"] as? Int, let votes = wish["votes"] as? Int, let description = wish["description"] as? String, let userPhoneUUID = wish["userPhoneUUID"] as? String  {
+            complete(WishlistEntity(id: wishId, votes: votes, description: description, userPhoneUUID: userPhoneUUID))
+          }
+        }
+      }
+    }
+
     task.resume()
   }
 }

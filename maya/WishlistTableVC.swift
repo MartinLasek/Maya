@@ -19,14 +19,26 @@ class WishlistTableVC: UITableViewController {
     tableView.delegate = self
     tableView.register(WishlistTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
     
-    /** TESTING DATA **/
-    for index in 1...23 {
-      self.wishes.append(WishlistEntity(id: index, votes: Int(arc4random_uniform(100)), description: "I'd love to have transitions between all view changes and so on you know"))
-    }
+    getWishlist()
+  }
+  
+  func getWishlist() {
+    let apiDispatcher = ApiDispatcher()
+    
+    apiDispatcher.getWishlist(complete: { wish in
+      
+      if !self.wishes.contains(where: { $0.description == wish.description }) {
+        self.wishes.append(wish)
+        
+        DispatchQueue.main.async(execute: {
+          self.tableView.reloadData()
+        })
+      }
+    })
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return wishes.count
+    return self.wishes.count
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -39,16 +51,16 @@ class WishlistTableVC: UITableViewController {
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    let cells = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-    cells.textLabel?.text = wishes[indexPath.row].description
-    cells.textLabel?.numberOfLines = 0
+    let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+    cell.textLabel?.text = wishes[indexPath.row].description
+    cell.textLabel?.numberOfLines = 0
     
-    let wishVotes = UILabel(frame: CGRect(x: 0, y: 0, width: cells.contentView.frame.size.width * 0.25, height: cells.contentView.frame.size.height))
+    let wishVotes = UILabel(frame: CGRect(x: 0, y: 0, width: cell.contentView.frame.size.width * 0.25, height: cell.contentView.frame.size.height))
     wishVotes.text = String(wishes[indexPath.row].votes)
     wishVotes.textAlignment = .center
     
-    cells.accessoryView = wishVotes
+    cell.accessoryView = wishVotes
     
-    return cells
+    return cell
   }
 }
