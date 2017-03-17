@@ -22,10 +22,10 @@ class SentImageVC: UIViewController {
   }
 
   override func viewWillAppear(_ animated: Bool) {
-    getSentImages()
+    fetchSentImages()
   }
   
-  func getSentImages() {
+  func fetchSentImages() {
     let apiDispatcher = ApiDispatcher()
     
     apiDispatcher.getImages(fromUrl: ApiDispatcher.getSentImagesUrl, complete: { imageName in

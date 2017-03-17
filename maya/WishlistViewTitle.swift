@@ -11,19 +11,13 @@ import UIKit
 class WishlistViewTitle {
   
   var title = UILabel()
-  let bounds: CGRect
+  let titleHeight: CGFloat = 28
   
   init(bounds: CGRect) {
-    self.bounds = bounds
-    prepare()
-  }
-  
-  func prepare() {
-    let appearance = CGRect(x: 0 , y: self.bounds.height * 0.125 - 28, width: self.bounds.width, height: 28)
-    title.frame = appearance
+    title.frame = CGRect(x: 0 , y: bounds.height * 0.125 - titleHeight, width: bounds.width, height: titleHeight)
     title.textAlignment = .center
     title.textColor = UIColor.white
-    title.font = UIFont.boldSystemFont(ofSize: 28)
-    title.text = "wishlist"
+    title.font = UIFont.boldSystemFont(ofSize: titleHeight)
+    title.text = "Add a wish"
   }
 }

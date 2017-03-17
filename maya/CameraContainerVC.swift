@@ -69,7 +69,7 @@ class CameraContainerVC: UIViewController {
     apiDispatcher.getRandomImage(complete: { image in
       if let image = image {
         
-        // needed to display received image imeadiatly
+        // needed to display received image immediatly
         DispatchQueue.main.async {
           self.receivedPhotoVC.receivedPhotoView.imageView.image = image
           self.takenPhotoVC.hideView()

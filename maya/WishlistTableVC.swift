@@ -19,10 +19,10 @@ class WishlistTableVC: UITableViewController {
     tableView.delegate = self
     tableView.register(WishlistTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
     
-    getWishlist()
+    fetchWishlist()
   }
   
-  func getWishlist() {
+  func fetchWishlist() {
     let apiDispatcher = ApiDispatcher()
     
     apiDispatcher.getWishlist(complete: { wish in

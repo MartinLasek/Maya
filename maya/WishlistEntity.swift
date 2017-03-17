@@ -14,11 +14,13 @@ class WishlistEntity {
   let votes: Int
   let description: String
   let userPhoneUUID: String
+  let isOwner: Bool
   
-  init(id: Int, votes:Int, description: String, userPhoneUUID: String) {
+  init(id: Int, votes:Int, description: String, userPhoneUUID: String, isOwner: Bool) {
     self.id = id
     self.votes = votes
     self.description = description
     self.userPhoneUUID = userPhoneUUID
+    self.isOwner = isOwner
   }
 }

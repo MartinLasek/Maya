@@ -115,6 +115,10 @@ class ApiDispatcher {
     let url = URL(string: ApiDispatcher.getWishlistUrl)
     var httpRequest = URLRequest(url: url!)
     httpRequest.httpMethod = "GET"
+    
+    if let phoneUUID = UIDevice.current.identifierForVendor?.uuidString {
+      httpRequest.setValue(phoneUUID, forHTTPHeaderField: "phoneUUID")
+    }
 
     let session = URLSession.shared
     let task = session.dataTask(with: httpRequest) { (data, response, error) in
@@ -123,8 +127,8 @@ class ApiDispatcher {
         
         for wish in json {
           
-          if let wishId = wish["id"] as? Int, let votes = wish["votes"] as? Int, let description = wish["description"] as? String, let userPhoneUUID = wish["userPhoneUUID"] as? String  {
-            complete(WishlistEntity(id: wishId, votes: votes, description: description, userPhoneUUID: userPhoneUUID))
+          if let wishId = wish["id"] as? Int, let votes = wish["votes"] as? Int, let description = wish["description"] as? String, let userPhoneUUID = wish["userPhoneUUID"] as? String, let isOwner = wish["isOwner"] as? Bool  {
+            complete(WishlistEntity(id: wishId, votes: votes, description: description, userPhoneUUID: userPhoneUUID, isOwner: isOwner))
           }
         }
       }

@@ -52,8 +52,7 @@ class GalleryContainerVC: UIViewController {
   }
   
   func prepareView() {
-    let backgroundColor = BackgroundColor(bounds: self.view.bounds)
-    self.view.layer.insertSublayer(backgroundColor.prepareGradient(), at: 0)
+    self.view.layer.insertSublayer(BackgroundColor(bounds: self.view.bounds).gradient, at: 0)
   }
   
   func showSentImageCollection() {

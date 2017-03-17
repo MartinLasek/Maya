@@ -10,7 +10,6 @@ import UIKit
 
 class WishlistContainerVC: UIViewController {
   
-  var viewTitle: WishlistViewTitle!
   var wishlistTableVC: WishlistTableVC!
   
   override func viewDidLoad() {
@@ -26,10 +25,19 @@ class WishlistContainerVC: UIViewController {
   }
   
   func prepareView() {
-    let backgroundColor = BackgroundColor(bounds: self.view.bounds)
-    self.view.layer.insertSublayer(backgroundColor.prepareGradient(), at: 0)
+    let viewTitle = WishlistViewTitle(bounds: self.view.bounds)
+    let addWishButton = AddWishButton(bounds: self.view.bounds)
+    addWishButton.button.addTarget(self, action: #selector(openAddWishModal), for: .touchUpInside)
     
-    self.viewTitle = WishlistViewTitle(bounds: self.view.bounds)
-    self.view.addSubview(self.viewTitle.title)
+    self.view.layer.insertSublayer(BackgroundColor(bounds: self.view.bounds).gradient, at: 0)
+    self.view.addSubview(viewTitle.title)
+    self.view.addSubview(addWishButton.button)
+  }
+  
+  func openAddWishModal() {
+    let addWishVC = AddWishVC()
+    addWishVC.modalPresentationStyle = .overCurrentContext
+    addWishVC.view.frame.size.height -= (tabBarController?.tabBar.frame.height)!
+    present(addWishVC, animated: true, completion: nil)
   }
 }
