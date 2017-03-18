@@ -21,6 +21,7 @@ class ApiDispatcher {
   
   /// MARK: Wish Api Endpoints
   static let getWishlistUrl = baseUrl + "/wish/list"
+  static let postWishUrl = baseUrl + "/wish/new"
   
   /// Sends taken image as bytes to API
   func postImage(req: SendImageRequest) {
@@ -134,6 +135,26 @@ class ApiDispatcher {
       }
     }
 
+    task.resume()
+  }
+  
+  func postWish(wish: String, complete: @escaping () -> ()) throws {
+    let url = URL(string: ApiDispatcher.postWishUrl)
+    var httpRequest = URLRequest(url: url!)
+    httpRequest.httpMethod = "POST"
+    
+    guard let phoneUUID = UIDevice.current.identifierForVendor?.uuidString else {
+      throw ApiError.couldNotGeneratePhoneUUID
+    }
+    
+    httpRequest.setValue(phoneUUID, forHTTPHeaderField: "phoneUUID")
+    httpRequest.setValue(wish, forHTTPHeaderField: "wish")
+    
+    let session = URLSession.shared
+    let task = session.dataTask(with: httpRequest) { (data, response, error) in
+      complete()
+    }
+    
     task.resume()
   }
 }

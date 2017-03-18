@@ -9,4 +9,5 @@
 enum ApiError: Error {
   
   case imageDataIsNull
+  case couldNotGeneratePhoneUUID
 }

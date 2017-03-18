@@ -36,6 +36,7 @@ class WishlistContainerVC: UIViewController {
   
   func openAddWishModal() {
     let addWishVC = AddWishVC()
+    addWishVC.delegate = wishlistTableVC
     addWishVC.modalPresentationStyle = .overCurrentContext
     addWishVC.view.frame.size.height -= (tabBarController?.tabBar.frame.height)!
     present(addWishVC, animated: true, completion: nil)

@@ -15,7 +15,7 @@ class AddWishView {
   var view: UIView
   var textView = UITextView()
   var closeButton = UIButton()
-  var createButton = UIButton()
+  var addButton = UIButton()
   
   init (bounds: CGRect) {
     self.viewHeight = bounds.height - 51
@@ -26,7 +26,7 @@ class AddWishView {
   
   func prepare() {
     let buttonWidth = self.viewWidth * 0.5
-    let buttonHeight: CGFloat = 60
+    let buttonHeight: CGFloat = 50
     let spaceToTop: CGFloat = 50
     let borderHorizontal = CALayer()
     let borderVertical = CALayer()
@@ -50,10 +50,10 @@ class AddWishView {
     self.closeButton.setTitleColor(UIColor.gray, for: .highlighted)
     self.closeButton.frame = CGRect(x: 0, y: spaceToTop, width: buttonWidth, height: buttonHeight)
     
-    self.createButton.setTitle("add", for: .normal)
-    self.createButton.setTitleColor(UIColor.black, for: .normal)
-    self.createButton.setTitleColor(UIColor.gray, for: .highlighted)
-    self.createButton.frame = CGRect(x: buttonWidth, y: spaceToTop, width: buttonWidth, height: buttonHeight)
+    self.addButton.setTitle("add", for: .normal)
+    self.addButton.setTitleColor(UIColor.black, for: .normal)
+    self.addButton.setTitleColor(UIColor.gray, for: .highlighted)
+    self.addButton.frame = CGRect(x: buttonWidth, y: spaceToTop, width: buttonWidth, height: buttonHeight)
     
     self.textView.frame = CGRect(x: 0, y: spaceToTop + buttonHeight, width: self.viewWidth, height: self.viewHeight)
   }

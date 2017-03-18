@@ -10,23 +10,40 @@ import UIKit
 
 class AddWishVC: UIViewController {
 
+  var delegate: WishlistTableVC!
+  var addWishView: AddWishView!
+  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
-    let addWishView = AddWishView(bounds: self.view.bounds)
+    addWishView = AddWishView(bounds: self.view.bounds)
     addWishView.closeButton.addTarget(self, action: #selector(self.dismissController), for: .touchUpInside)
+    addWishView.addButton.addTarget(self, action: #selector(self.addWish), for: .touchUpInside)
     
     self.view.addSubview(addWishView.view)
     self.view.addSubview(addWishView.closeButton)
-    self.view.addSubview(addWishView.createButton)
+    self.view.addSubview(addWishView.addButton)
     self.view.addSubview(addWishView.textView)
-  }
-  
-  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    //self.dismiss(animated: true, completion: nil)
   }
   
   func dismissController() {
     self.dismiss(animated: true, completion: nil)
+  }
+  
+  func addWish() throws {
+    
+    guard let wishText = addWishView.textView.text else {
+      throw WishlistError.noWishTextToAdd
+    }
+    
+    if (wishText.characters.count > 0) {
+      let apiDispatcher = ApiDispatcher()
+      
+      try apiDispatcher.postWish(wish: wishText, complete: {
+        self.delegate.fetchWishlist()
+      })
+      
+      self.dismissController()
+    }
   }
 }

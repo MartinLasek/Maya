@@ -14,6 +14,7 @@
 		233A7B6F1E599B9700440418 /* CameraViewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233A7B6E1E599B9700440418 /* CameraViewRequest.swift */; };
 		233A7B711E599C3F00440418 /* CameraViewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233A7B701E599C3F00440418 /* CameraViewResponse.swift */; };
 		233A7B751E5A50C700440418 /* TakenPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233A7B741E5A50C700440418 /* TakenPhotoView.swift */; };
+		235227CB1E7D8381001612F7 /* WishlistError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235227CA1E7D8381001612F7 /* WishlistError.swift */; };
 		239E0E8B1E6358B600B736D3 /* BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239E0E8A1E6358B600B736D3 /* BackgroundColor.swift */; };
 		23A9A5011E7B6AF900A64934 /* AddWishButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A9A5001E7B6AF900A64934 /* AddWishButton.swift */; };
 		23B0CC9B1E5B70FE0038FE4C /* ApiDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B0CC9A1E5B70FE0038FE4C /* ApiDispatcher.swift */; };
@@ -53,6 +54,7 @@
 		233A7B6E1E599B9700440418 /* CameraViewRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewRequest.swift; sourceTree = "<group>"; };
 		233A7B701E599C3F00440418 /* CameraViewResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewResponse.swift; sourceTree = "<group>"; };
 		233A7B741E5A50C700440418 /* TakenPhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakenPhotoView.swift; sourceTree = "<group>"; };
+		235227CA1E7D8381001612F7 /* WishlistError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishlistError.swift; sourceTree = "<group>"; };
 		239E0E8A1E6358B600B736D3 /* BackgroundColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundColor.swift; sourceTree = "<group>"; };
 		23A9A5001E7B6AF900A64934 /* AddWishButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWishButton.swift; sourceTree = "<group>"; };
 		23B0CC9A1E5B70FE0038FE4C /* ApiDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiDispatcher.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				23B0CCA01E5B7EF20038FE4C /* ApiError.swift */,
+				235227CA1E7D8381001612F7 /* WishlistError.swift */,
 			);
 			name = Error;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				233A7B751E5A50C700440418 /* TakenPhotoView.swift in Sources */,
 				23F805221E75FD8300FF2055 /* WishlistTableViewCell.swift in Sources */,
 				233A7B6B1E599A4900440418 /* CameraView.swift in Sources */,
+				235227CB1E7D8381001612F7 /* WishlistError.swift in Sources */,
 				233A7B711E599C3F00440418 /* CameraViewResponse.swift in Sources */,
 				23B0CC9B1E5B70FE0038FE4C /* ApiDispatcher.swift in Sources */,
 				230320301E64B803002FC78E /* GalleryTabView.swift in Sources */,
