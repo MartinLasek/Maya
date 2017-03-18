@@ -10,33 +10,36 @@ import UIKit
 
 class AddWishView {
   
-  let bounds: CGRect
+  let viewHeight: CGFloat
+  let viewWidth: CGFloat
   var view: UIView
-  var wishTextField = UITextField()
+  var textView = UITextView()
   var closeButton = UIButton()
   var createButton = UIButton()
   
   init (bounds: CGRect) {
-    self.bounds = bounds
-    self.view = UIView(frame: CGRect(x: 0, y: 50, width: bounds.width, height: bounds.height - 51))
+    self.viewHeight = bounds.height - 51
+    self.viewWidth = bounds.width
+    self.view = UIView(frame: CGRect(x: 0, y: 50, width: self.viewWidth, height: self.viewHeight))
     prepare()
   }
   
   func prepare() {
-    let buttonWidth = bounds.width * 0.5
-    let buttonHeight: CGFloat = self.bounds.height * 0.08
+    let buttonWidth = self.viewWidth * 0.5
+    let buttonHeight: CGFloat = 60
     let spaceToTop: CGFloat = 50
     let borderHorizontal = CALayer()
     let borderVertical = CALayer()
     
     borderHorizontal.borderColor = UIColor.lightGray.cgColor
     borderHorizontal.borderWidth = 1
-    borderHorizontal.frame = CGRect(x: 0, y: buttonHeight, width: bounds.width, height: 0.5)
+    borderHorizontal.frame = CGRect(x: 0, y: buttonHeight - 0.5, width: self.viewWidth, height: 0.5)
     
     borderVertical.borderColor = UIColor.lightGray.cgColor
     borderVertical.borderWidth = 1
     borderVertical.frame = CGRect(x: buttonWidth, y: 0, width: 0.5, height: buttonHeight)
     
+    // styling view
     self.view.layer.cornerRadius = 15
     self.view.backgroundColor = UIColor.white
     self.view.layer.addSublayer(borderHorizontal)
@@ -51,5 +54,7 @@ class AddWishView {
     self.createButton.setTitleColor(UIColor.black, for: .normal)
     self.createButton.setTitleColor(UIColor.gray, for: .highlighted)
     self.createButton.frame = CGRect(x: buttonWidth, y: spaceToTop, width: buttonWidth, height: buttonHeight)
+    
+    self.textView.frame = CGRect(x: 0, y: spaceToTop + buttonHeight, width: self.viewWidth, height: self.viewHeight)
   }
 }

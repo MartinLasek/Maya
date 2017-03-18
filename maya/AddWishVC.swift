@@ -19,6 +19,7 @@ class AddWishVC: UIViewController {
     self.view.addSubview(addWishView.view)
     self.view.addSubview(addWishView.closeButton)
     self.view.addSubview(addWishView.createButton)
+    self.view.addSubview(addWishView.textView)
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
