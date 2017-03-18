@@ -16,8 +16,8 @@ class WishlistContainerVC: UIViewController {
     prepareView()
     
     wishlistTableVC = WishlistTableVC()
-    wishlistTableVC.view.frame.size.height = self.view.bounds.height * 0.66
-    wishlistTableVC.view.frame.origin.y = self.view.bounds.height * 0.34 - (tabBarController?.tabBar.frame.height)!
+    wishlistTableVC.view.frame.size.height = self.view.bounds.height * 0.66 - (tabBarController?.tabBar.frame.height)!
+    wishlistTableVC.view.frame.origin.y = self.view.bounds.height * 0.34
     wishlistTableVC.didMove(toParentViewController: self)
     
     self.addChildViewController(wishlistTableVC)

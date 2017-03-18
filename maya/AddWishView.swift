@@ -18,33 +18,38 @@ class AddWishView {
   
   init (bounds: CGRect) {
     self.bounds = bounds
-    self.view = UIView(frame: CGRect(x: 0, y: 20, width: bounds.width, height: bounds.height * 0.9))
-    
+    self.view = UIView(frame: CGRect(x: 0, y: 50, width: bounds.width, height: bounds.height - 51))
     prepare()
   }
   
   func prepare() {
     let buttonWidth = bounds.width * 0.5
-    let buttonHeight: CGFloat = 45
-    let topBarHeight: CGFloat = 20
-    let border = CALayer()
+    let buttonHeight: CGFloat = self.bounds.height * 0.08
+    let spaceToTop: CGFloat = 50
+    let borderHorizontal = CALayer()
+    let borderVertical = CALayer()
     
-    border.borderColor = UIColor.gray.cgColor
-    border.borderWidth = 1
-    border.frame = CGRect(x: 0, y: buttonHeight, width: bounds.width, height: 0.5)
+    borderHorizontal.borderColor = UIColor.lightGray.cgColor
+    borderHorizontal.borderWidth = 1
+    borderHorizontal.frame = CGRect(x: 0, y: buttonHeight, width: bounds.width, height: 0.5)
+    
+    borderVertical.borderColor = UIColor.lightGray.cgColor
+    borderVertical.borderWidth = 1
+    borderVertical.frame = CGRect(x: buttonWidth, y: 0, width: 0.5, height: buttonHeight)
     
     self.view.layer.cornerRadius = 15
     self.view.backgroundColor = UIColor.white
-    self.view.layer.addSublayer(border)
+    self.view.layer.addSublayer(borderHorizontal)
+    self.view.layer.addSublayer(borderVertical)
     
     self.closeButton.setTitle("close", for: .normal)
     self.closeButton.setTitleColor(UIColor.black, for: .normal)
     self.closeButton.setTitleColor(UIColor.gray, for: .highlighted)
-    self.closeButton.frame = CGRect(x: 0, y: topBarHeight, width: buttonWidth, height: buttonHeight)
+    self.closeButton.frame = CGRect(x: 0, y: spaceToTop, width: buttonWidth, height: buttonHeight)
     
     self.createButton.setTitle("add", for: .normal)
     self.createButton.setTitleColor(UIColor.black, for: .normal)
     self.createButton.setTitleColor(UIColor.gray, for: .highlighted)
-    self.createButton.frame = CGRect(x: buttonWidth, y: topBarHeight, width: buttonWidth, height: buttonHeight)
+    self.createButton.frame = CGRect(x: buttonWidth, y: spaceToTop, width: buttonWidth, height: buttonHeight)
   }
 }

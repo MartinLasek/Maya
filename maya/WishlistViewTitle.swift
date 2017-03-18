@@ -18,6 +18,6 @@ class WishlistViewTitle {
     title.textAlignment = .center
     title.textColor = UIColor.white
     title.font = UIFont.boldSystemFont(ofSize: titleHeight)
-    title.text = "Add a wish"
+    title.text = "wishlist"
   }
 }

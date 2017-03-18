@@ -9,22 +9,19 @@
 import UIKit
 
 class GalleryTabView {
-  var sentTab = UIButton()
-  var receivedTab = UIButton()
-  let bounds: CGRect
+  var sentTab: UIButton
+  var receivedTab: UIButton
   
   init(bounds: CGRect) {
-    self.bounds = bounds
+    let buttonHeight = bounds.height * 0.08
+    let buttonWidth = bounds.width/2
     
-    prepare()
-  }
-  
-  func prepare() {
-    sentTab.layer.frame = CGRect(x: 0, y: bounds.height * 0.26, width: bounds.width/2, height: bounds.height * 0.08)
+    sentTab = UIButton(frame: CGRect(x: 0, y: bounds.height * 0.26, width: buttonWidth, height: buttonHeight))
     sentTab.backgroundColor = UIColor.white
     sentTab.setTitle("sent", for: .normal)
     sentTab.setTitleColor(UIColor.gray, for: .normal)
-    receivedTab.layer.frame = CGRect(x: bounds.width/2, y: bounds.height * 0.26, width: bounds.width/2, height: bounds.height * 0.08)
+    
+    receivedTab = UIButton(frame: CGRect(x: buttonWidth, y: bounds.height * 0.26, width: buttonWidth, height: buttonHeight))
     receivedTab.backgroundColor = UIColor.white
     receivedTab.setTitle("received", for: .normal)
     receivedTab.setTitleColor(UIColor.gray, for: .normal)

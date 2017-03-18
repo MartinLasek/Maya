@@ -13,13 +13,17 @@ class AddWishButton {
   var button: UIButton
   
   init(bounds: CGRect) {
-    let buttonSize: CGFloat = 50
+    let border = CALayer()
     
-    self.button = UIButton(frame: CGRect(x: bounds.width * 0.5 - buttonSize / 2, y: bounds.height * 0.20 - buttonSize / 2, width: buttonSize, height: buttonSize))
+    border.borderColor = UIColor.gray.cgColor
+    border.borderWidth = 1
+    border.frame = CGRect(x: 0, y: bounds.height * 0.08 - 1, width: bounds.width, height: 0.5)
+    
+    self.button = UIButton(frame: CGRect(x: 0, y: bounds.height * 0.26, width: bounds.width, height: bounds.height * 0.08))
     self.button.backgroundColor = UIColor.white
-    self.button.layer.cornerRadius = buttonSize / 2
-    self.button.setTitle("+", for: .normal)
+    self.button.setTitle("add wish", for: .normal)
     self.button.setTitleColor(UIColor.black, for: .normal)
     self.button.setTitleColor(UIColor.gray, for: .highlighted)
+    self.button.layer.addSublayer(border)
   }
 }
