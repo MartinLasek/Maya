@@ -42,7 +42,7 @@ class WishlistTableVC: UITableViewController {
       }
       
       // updated votes for a wish
-      if self.wishes.contains(where: { $0.votes != wish.votes}) {
+      if self.wishes.contains(where: { $0.id == wish.id && $0.votes != wish.votes}) {
         
         for element in self.wishes {
           
