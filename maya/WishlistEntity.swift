@@ -11,7 +11,7 @@ import UIKit
 class WishlistEntity {
 
   let id: Int
-  let votes: Int
+  var votes: Int
   let description: String
   let userPhoneUUID: String
   let isOwner: Bool

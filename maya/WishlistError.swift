@@ -9,4 +9,5 @@
 enum WishlistError: Error {
   
   case noWishTextToAdd
+  case couldNotGetPhoneUUID
 }

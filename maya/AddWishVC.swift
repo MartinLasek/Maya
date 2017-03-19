@@ -32,14 +32,10 @@ class AddWishVC: UIViewController {
   
   func addWish() throws {
     
-    guard let wishText = addWishView.textView.text else {
-      throw WishlistError.noWishTextToAdd
-    }
-    
-    if (wishText.characters.count > 0) {
+    if (addWishView.textView.text.characters.count > 0) {
       let apiDispatcher = ApiDispatcher()
       
-      try apiDispatcher.postWish(wish: wishText, complete: {
+      try apiDispatcher.postWish(wish: addWishView.textView.text, complete: {
         self.delegate.fetchWishlist()
       })
       

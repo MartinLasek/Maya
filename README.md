@@ -18,7 +18,7 @@ Date | Functionality
 27.02.2017 | collection view with received photos in gallery view
 16.03.2017 | implement tableview in wishlist view
 18.03.2017 | add wish to wishlis
- | vote wish up/down
+19.03.2017 | vote wish up
  | set optional username
 
 ### Licence

@@ -27,14 +27,46 @@ class WishlistTableVC: UITableViewController {
     
     apiDispatcher.getWishlist(complete: { wish in
       
-      if !self.wishes.contains(where: { $0.description == wish.description }) {
+      // adds only wishes to list that don't exist yet
+      if !self.wishes.contains(where: { $0.id == wish.id }) {
         self.wishes.append(wish)
+        self.wishes.sort { $0.votes > $1.votes }
         
         DispatchQueue.main.async(execute: {
           self.tableView.reloadData()
         })
       }
+      
+      // updated votes for a wish
+      if self.wishes.contains(where: { $0.votes != wish.votes}) {
+        
+        for element in self.wishes {
+          
+          if (element.id == wish.id) {
+            element.votes = wish.votes
+            self.wishes.sort { $0.votes > $1.votes }
+            
+            DispatchQueue.main.async(execute: {
+              self.tableView.reloadData()
+            })
+          }
+        }
+      }
     })
+  }
+  
+  func vote(wish: WishlistEntity) throws {
+    
+    guard let phoneUUID = UIDevice.current.identifierForVendor?.uuidString else {
+      throw WishlistError.couldNotGetPhoneUUID
+    }
+    
+    if wish.userPhoneUUID != phoneUUID {
+      let apiDispatcher = ApiDispatcher()
+      try apiDispatcher.voteWish(wish: wish, complete: {
+        self.fetchWishlist()
+      })
+    }
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,5 +94,16 @@ class WishlistTableVC: UITableViewController {
     cell.accessoryView = wishVotes
     
     return cell
+  }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    do {
+      try self.vote(wish: wishes[indexPath.row])
+    } catch {
+      return
+    }
+    
+    tableView.deselectRow(at: indexPath, animated: true)
   }
 }
