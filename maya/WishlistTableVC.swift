@@ -34,6 +34,10 @@ class WishlistTableVC: UITableViewController {
         
         DispatchQueue.main.async(execute: {
           self.tableView.reloadData()
+          
+          // needed to fix wrong alignments in some cells
+          self.tableView.setNeedsLayout()
+          self.tableView.layoutIfNeeded()
         })
       }
       

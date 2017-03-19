@@ -56,5 +56,6 @@ class AddWishView {
     self.addButton.frame = CGRect(x: buttonWidth, y: spaceToTop, width: buttonWidth, height: buttonHeight)
     
     self.textView.frame = CGRect(x: 0, y: spaceToTop + buttonHeight, width: self.viewWidth, height: self.viewHeight)
+    self.textView.becomeFirstResponder()
   }
 }
