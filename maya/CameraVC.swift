@@ -14,12 +14,16 @@ class CameraVC: UIViewController {
   var cameraView: CameraView!
   weak var delegate: CameraContainerVC!
   
-  override func viewWillAppear(_ animated: Bool) {
+  override func viewDidLoad() {
     self.cameraView = CameraView(bounds: self.view.bounds)
     self.cameraView.shutterButton.addTarget(self, action: #selector(takePhoto), for: .touchUpInside)
     
     self.view.addSubview(self.cameraView.view)
     self.view.addSubview(self.cameraView.shutterButton)
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    self.cameraView.captureSession.startRunning()
   }
   
   /// Will stop the camera session

@@ -39,7 +39,6 @@ class CameraView {
           previewLayer.connection.videoOrientation = AVCaptureVideoOrientation.portrait
           previewLayer.frame = bounds
           view.layer.addSublayer(previewLayer)
-          captureSession.startRunning()
         }
       }
     } catch {

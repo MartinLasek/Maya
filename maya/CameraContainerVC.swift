@@ -15,9 +15,7 @@ class CameraContainerVC: UIViewController {
   var takenPhotoVC: TakenPhotoVC!
   var receivedPhotoVC: ReceivedPhotoVC!
   
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    
+  override func viewDidLoad() {
     cameraVC = CameraVC()
     cameraVC.delegate = self
     cameraVC.view.frame = self.view.frame
