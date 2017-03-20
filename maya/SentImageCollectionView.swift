@@ -21,6 +21,7 @@ class SentImageCollectionView {
     view = UICollectionView(frame: CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height), collectionViewLayout: layout)
     view.register(SentImageCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     view.backgroundColor = UIColor.white
+    view.alwaysBounceVertical = true
   }
   
   func setDelegate(delegate: UICollectionViewDelegate) {
