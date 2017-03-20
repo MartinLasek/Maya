@@ -17,9 +17,9 @@ Date | Functionality
 25.02.2017 | collection view with sent photos in gallery view
 27.02.2017 | collection view with received photos in gallery view
 16.03.2017 | implement tableview in wishlist view
-18.03.2017 | add wish to wishlis
+18.03.2017 | add wish to wishlist
 19.03.2017 | vote wish up
- | set optional username
+ | add terms of use needed to be accepted
 
 ### Licence
 **This is going to be a free App. You are not allowed to publish it as your own to the AppStore.**
