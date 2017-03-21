@@ -13,9 +13,7 @@ class TakenPhotoVC: UIViewController {
   var takenPhotoView: TakenPhotoView!
   weak var delegate: CameraContainerVC!
   
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    
+  override func viewDidLoad() {    
     takenPhotoView = TakenPhotoView(bounds: self.view.bounds)
     self.takenPhotoView.closeButton.addTarget(self, action: #selector(redoPhoto), for: .touchUpInside)
     self.takenPhotoView.nextButton.addTarget(self, action: #selector(sendPhoto), for: .touchUpInside)
