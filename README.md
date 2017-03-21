@@ -19,7 +19,7 @@ Date | Functionality
 16.03.2017 | implement tableview in wishlist view
 18.03.2017 | add wish to wishlist
 19.03.2017 | vote wish up
- | add terms of use needed to be accepted
+--.--.---- | add terms of use needed to be accepted
 
 ### Licence
 **This is going to be a free App. You are not allowed to publish it as your own to the AppStore.**
