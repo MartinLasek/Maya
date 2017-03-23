@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "shutter-icon.png",
+      "filename" : "Shutter.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "shutter-iconX2.png",
+      "filename" : "Shutter-1.png",
       "scale" : "2x"
     },
     {

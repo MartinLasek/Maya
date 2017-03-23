@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "next-icon.png",
+      "filename" : "Send.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "next-iconX2.png",
+      "filename" : "Send-1.png",
       "scale" : "2x"
     },
     {

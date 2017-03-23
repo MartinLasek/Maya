@@ -19,7 +19,7 @@ class CameraView {
   let frontCamera = AVCaptureDevice.defaultDevice(withDeviceType: AVCaptureDeviceType.builtInWideAngleCamera, mediaType: AVMediaTypeVideo, position: AVCaptureDevicePosition.front)
   
   let shutterButton = UIButton()
-  let shutterImage = UIImage(named: "shutter-icon")
+  let shutterImage = UIImage(named: "Shutter")
   
   init(bounds: CGRect) {
     self.bounds = bounds

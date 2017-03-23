@@ -14,7 +14,7 @@ class ReceivedPhotoView {
   let bounds: CGRect
   
   let closeButton = UIButton()
-  let closeImage = UIImage(named: "close-icon")
+  let closeImage = UIImage(named: "Accept")
   
   init(bounds: CGRect) {
     self.bounds = bounds
@@ -25,9 +25,9 @@ class ReceivedPhotoView {
   }
   
   func positionCloseButton() -> CGRect {
-    let buttonSize: CGFloat = 40
+    let buttonSize: CGFloat = 60
     let x = (self.bounds.width / 2) - (buttonSize / 2)
-    let y = self.bounds.height - 120
+    let y = self.bounds.height - 130
     
     return CGRect(x: x, y: y, width: buttonSize, height: buttonSize)
   }
