@@ -22,12 +22,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let wishlistViewController = WishlistContainerVC()
     let controllers = [galleryViewController, cameraViewController, wishlistViewController]
     
-    tabBarController.tabBar.backgroundColor = UIColor.white
-    //tabBarController.tabBar.barTintColor = UIColor.white
+    // set tabbar color to white
+    tabBarController.tabBar.barTintColor = UIColor.white    
+    tabBarController.tabBar.tintColor = UIColor.black
+    UITabBar.appearance().backgroundColor = UIColor.white
     
-    galleryViewController.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "Gallery-Icon"), tag: 1)
-    cameraViewController.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "Camera-Icon"), tag: 2)
-    wishlistViewController.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "Wishlist-Icon"), tag: 3)
+    galleryViewController.tabBarItem = UITabBarItem(
+      title: nil,
+      image: UIImage(named: "Gallery-Icon")?.withRenderingMode(.alwaysOriginal),
+      selectedImage: UIImage(named: "Gallery-Icon-Selected")?.withRenderingMode(.alwaysOriginal)
+    )
+    
+    cameraViewController.tabBarItem = UITabBarItem(
+      title: nil,
+      image: UIImage(named: "Camera-Icon")?.withRenderingMode(.alwaysOriginal),
+      selectedImage: UIImage(named: "Camera-Icon-selected")?.withRenderingMode(.alwaysOriginal)
+    )
+    
+    wishlistViewController.tabBarItem = UITabBarItem(
+      title: nil,
+      image: UIImage(named: "Wishlist-Icon")?.withRenderingMode(.alwaysOriginal),
+      selectedImage: UIImage(named: "Wishlist-Icon-selected")?.withRenderingMode(.alwaysOriginal)
+    )
     
     // centers tab icons vertically
     for controller in controllers {
